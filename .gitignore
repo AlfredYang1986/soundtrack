@@ -1,0 +1,14 @@
+/bin
+/.target
+/target
+/project/project/target
+/project/target
+/upload
+/logs
+/.classpath
+/.settings
+/lib
+
+.DS_Store
+
+RUNNING_PID
