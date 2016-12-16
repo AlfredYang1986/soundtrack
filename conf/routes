@@ -2,8 +2,31 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# ajax call
+POST 	/auth/push					controllers.ajax.AuthController.authWithWechat
+POST	/auth/update				controllers.ajax.AuthController.authUpdateUser 
+POST	/auth/query					controllers.ajax.AuthController.authQueryUser
 
+POST	/payload/push				controllers.ajax.PayloadController.pushPayload
+POST	/payload/pop				controllers.ajax.PayloadController.popPayload
+POST	/payload/update				controllers.ajax.PayloadController.updatePayload
+POST	/payload/query				controllers.ajax.PayloadController.queryPayload
+POST	/payload/search				controllers.ajax.PayloadController.searchPayload
+
+POST	/sysnot/push				controllers.ajax.SystemNotifyController.pushSysNot
+POST	/sysnot/pop					controllers.ajax.SystemNotifyController.popSysNot
+POST	/sysnot/update				controllers.ajax.SystemNotifyController.updateSysNot
+POST	/sysnot/query				controllers.ajax.SystemNotifyController.querySysNot
+POST	/sysnot/search				controllers.ajax.SystemNotifyController.searchSysNot
+
+POST	/comment/push				controllers.ajax.CommentsController.pushComment
+POST	/comment/pop				controllers.ajax.CommentsController.popComment
+POST	/comment/query				controllers.ajax.CommentsController.queryComments
+POST	/comment/top				controllers.ajax.CommentsController.queryTopComments
+POST	/comment/update				controllers.ajax.CommentsController.updataComment
+POST	/comment/like				controllers.ajax.CommentsController.likeComment
+
+# pages
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

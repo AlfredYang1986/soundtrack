@@ -18,6 +18,7 @@ import java.util.Date
 object AuthStatus {
 	object normal extends AuthDefines(0, "normal")
 	object authed extends AuthDefines(1, "auth")
+	object admin extends AuthDefines(99, "admin")
 }
 
 sealed case class AuthDefines(t : Int, d : String)
@@ -31,6 +32,26 @@ object AuthModule extends ModuleTrait {
 		case msg_authUpdateUser(data) => authUpdateUser(data)
 		
 		case _ => ???
+	}
+	
+	def initAuthDBS = {
+		val builder = MongoDBObject.newBuilder
+		val wechat_id = "admin"
+		builder += "wechat_id" -> wechat_id
+
+		builder += "screen_name" -> "admin"
+		builder += "screen_photo" -> "admin"
+		builder += "gender" -> 0
+		
+		val d = new Date().getTime
+		builder += "token" -> Sercurity.md5Hash(wechat_id + Sercurity.getTimeSpanWithMillSeconds)
+
+		builder += "start_in" -> -1
+		builder += "expired_in" -> -1
+		builder += "register" -> d
+		builder += "auth" -> AuthStatus.admin
+		
+		_data_connection.getCollection("auth") += builder.result
 	}
 	
 	def authCreateUser(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {

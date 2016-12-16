@@ -14,7 +14,7 @@ import com.mongodb.casbah.Imports._
 import java.util.Date
 import module.sercurity.Sercurity
 
-class SystemNotifyModule {
+object SystemNotifyModule extends ModuleTrait {
 	
  	def dispatchMsg(msg : MessageDefines)(pr : Option[Map[String, JsValue]]) : (Option[Map[String, JsValue]], Option[JsValue]) = msg match {
 		case msg_pushSystemNotify(data) => pushSystemNotify(data)

@@ -14,6 +14,11 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.libs.json.JsValue
 import play.api.libs.json.Json.toJson
 
+import module.auth.{ msg_AuthCommand, AuthModule }
+import module.payload.{ msg_PayloadCommand, PayloadModule }
+import module.comments.{ msg_CommentsCommand, CommentsModule }
+import module.systemnotify.{ msg_SystemNotifyCommand, SystemNotifyModule }
+
 object PipeFilterActor {
 	def prop(originSender : ActorRef, msr : MessageRoutes) : Props = {
 		Props(new PipeFilterActor(originSender, msr))
@@ -41,6 +46,10 @@ class PipeFilterActor(originSender : ActorRef, msr : MessageRoutes) extends Acto
 	var rst : Option[Map[String, JsValue]] = msr.rst
 	var next : ActorRef = null
 	def receive = {
+		case cmd : msg_AuthCommand => dispatchImpl(cmd, AuthModule)
+		case cmd : msg_PayloadCommand => dispatchImpl(cmd, PayloadModule)
+		case cmd : msg_CommentsCommand => dispatchImpl(cmd, CommentsModule)
+		case cmd : msg_SystemNotifyCommand => dispatchImpl(cmd, SystemNotifyModule)
 		case cmd : msg_ResultCommand => dispatchImpl(cmd, ResultModule)
 		case cmd : ParallelMessage => {
 		    cancelActor
