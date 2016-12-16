@@ -16,7 +16,7 @@ object MongoDBCollManager {
      * functional functions
      */
     private def getDefaultCilent : MongoClient = MongoClient()
-    private def getBabyDatabase(name : String = "akka") : MongoDB = 
+    private def getBabyDatabase(name : String = "soundtrack") : MongoDB = 
       	if (db == null) { db = this.getDefaultCilent(name); db }
       	else db
     

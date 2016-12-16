@@ -110,6 +110,9 @@ class SystemNotifyModule {
  	}
  	
  	def DB2JsValue(x : MongoDBObject) : Map[String, JsValue] = {
- 		null
+ 		Map("sn_id" -> toJson(x.getAs[String]("sn_id").get),
+ 			"title" -> toJson(x.getAs[String]("title").get),
+ 			"content" -> toJson(x.getAs[String]("content").get),
+ 			"date" -> toJson(x.getAs[Number]("date").get.longValue))
  	}
 }
