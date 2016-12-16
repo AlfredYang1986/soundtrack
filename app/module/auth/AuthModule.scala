@@ -113,6 +113,13 @@ object AuthModule extends ModuleTrait {
 	
 	def DB2JsValue(x : MongoDBObject) : Map[String, JsValue] = {
 		Map("wechat_id" -> toJson(x.getAs[String]("wechat_id").get),
-			"screen_name" -> toJson(x.getAs[String]("screen_name").get))
+			"screen_name" -> toJson(x.getAs[String]("screen_name").get),
+			"screen_photo" -> toJson(x.getAs[String]("screen_photo").get),
+			"gender" -> toJson(x.getAs[Number]("gender").get.intValue),
+			"token" -> toJson(x.getAs[String]("token").get),
+			"start_in" -> toJson(x.getAs[Number]("start_in").get.longValue),
+			"expired_in" -> toJson(x.getAs[Number]("expired_in").get.longValue),
+			"register" -> toJson(x.getAs[Number]("register").get.longValue),
+			"auth" -> toJson(x.getAs[Number]("auth").get.intValue))
 	}
 }
