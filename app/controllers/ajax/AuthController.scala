@@ -13,7 +13,7 @@ import module.auth.AuthMessages._
 object AuthController extends Controller {
 	def authWithWechat = Action (request => requestArgsV2(request) { jv => 
 		import pattern.ResultMessage.common_result
-		MessageRoutes(msg_authCreateUser(jv) :: msg_CommonResultMessage() :: Nil, None)
+		MessageRoutes(msg_authWithWechat(jv) :: msg_CommonResultMessage() :: Nil, None)
 	})
 	def authQueryUser = Action (request => requestArgsV2(request) { jv => 
 		import pattern.ResultMessage.common_result

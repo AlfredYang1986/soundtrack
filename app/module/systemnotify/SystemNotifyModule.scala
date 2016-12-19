@@ -71,6 +71,10 @@ object SystemNotifyModule extends ModuleTrait {
  		
  			(from db() in "sys_not" where ("sn_id" -> sn_id) select (x => x)).toList match {
  				case head :: Nil => {
+ 					(data \ "title").asOpt[String].map (x => head += "title" -> x).getOrElse(Unit)
+ 					(data \ "content").asOpt[String].map (x => head += "content" -> x).getOrElse(Unit)
+ 				
+ 					_data_connection.getCollection("sys_not").update(DBObject("sn_id" -> sn_id), head)
 		 			(Some(DB2JsValue(head)), None)
  				}
  				case _ => throw new Exception("service not existing")

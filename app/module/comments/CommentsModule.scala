@@ -30,7 +30,7 @@ object CommentsModule extends ModuleTrait {
 	def pushComment(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
 		try {
 			val db_obj = Js2DBObject(data)
-			_data_connection.getCollection("commends") += db_obj
+			_data_connection.getCollection("comments") += db_obj
 			(Some(DB2JsValue(db_obj)), None)
 			
 		} catch {
@@ -70,6 +70,9 @@ object CommentsModule extends ModuleTrait {
 			
 			(from db() in "comments" where ("comment_id" -> comment_id) select (x => x)).toList match {
 				case head :: Nil => {
+					(data \ "content").asOpt[String].map (x => head += "content" -> x).getOrElse(Unit)
+				
+					_data_connection.getCollection("comments").update(DBObject("comment_id" -> comment_id), head)
 					(Some(DB2JsValue(head)), None)
 				}
 				case _ => throw new Exception("service not existing")

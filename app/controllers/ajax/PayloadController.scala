@@ -17,7 +17,7 @@ object PayloadController extends Controller {
 	})
 	def queryPayload = Action (request => requestArgsV2(request) { jv => 
 		import pattern.ResultMessage.common_result
-		MessageRoutes(msg_pushPayload(jv) :: msg_CommonResultMessage() :: Nil, None)
+		MessageRoutes(msg_queryPayload(jv) :: msg_CommonResultMessage() :: Nil, None)
 	})
 	def searchPayload = Action (request => requestArgsV2(request) { jv =>
 		import pattern.ResultMessage.lst_result

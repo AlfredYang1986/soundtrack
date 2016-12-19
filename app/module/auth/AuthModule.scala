@@ -30,6 +30,7 @@ object AuthModule extends ModuleTrait {
 		case msg_authCheck(data) => authCheck(data)
 		case msg_queryUser(data) => queryUser(data)
 		case msg_authUpdateUser(data) => authUpdateUser(data)
+		case msg_authWithWechat(data) => authWithWechat(data)
 		
 		case _ => ???
 	}
@@ -49,15 +50,29 @@ object AuthModule extends ModuleTrait {
 		builder += "start_in" -> -1
 		builder += "expired_in" -> -1
 		builder += "register" -> d
-		builder += "auth" -> AuthStatus.admin
+		builder += "auth" -> AuthStatus.admin.t
 		
-		_data_connection.getCollection("auth") += builder.result
+		_data_connection.getCollection("users") += builder.result
+	}
+	
+	def authWithWechat(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
+		try {
+			val wechat_id = (data \ "wechat_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
+			
+			(from db() in "users" where ("wechat_id" -> wechat_id) select (DB2JsValue(_))).toList match {
+				case head :: Nil => (Some(head), None)
+				case _ => authCreateUser(data)
+			}
+			
+		} catch {
+			case ex : Exception => (None, Some(ErrorCode.errorToJson("wrong input")))
+		}
 	}
 	
 	def authCreateUser(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
 		try {
 			val obj = Js2DBObject(data)
-			_data_connection.getCollection("auth") += obj
+			_data_connection.getCollection("users") += obj
 			(Some(DB2JsValue(obj)), None)
 			
 		} catch {
@@ -72,7 +87,7 @@ object AuthModule extends ModuleTrait {
 		
 			(from db() in "auth" where ("token" -> token) select (DB2JsValue(_))).toList match {
 				case head :: Nil => {
-					if (head.get("auth").get.asOpt[Int].get < least_auth) throw new Exception("not allowed")
+					if (head.get("users").get.asOpt[Int].get < least_auth) throw new Exception("not allowed")
 					else (Some(head), None)
 				}
 				case _ => throw new Exception("unknown user")
@@ -87,7 +102,7 @@ object AuthModule extends ModuleTrait {
 		try {
 			val wechat_id = (data \ "wechat_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
 			
-			(from db() in "auth" where ("wechat_id" -> wechat_id) select (DB2JsValue(_))).toList match {
+			(from db() in "users" where ("wechat_id" -> wechat_id) select (DB2JsValue(_))).toList match {
 				case head :: Nil => (Some(head), None)
 				case _ => throw new Exception("unknown user")
 			}
@@ -99,10 +114,20 @@ object AuthModule extends ModuleTrait {
 	
 	def authUpdateUser(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
 		try {
-			val user_id = (data \ "user_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
+			val user_id = (data \ "wechat_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
 
-			(from db() in "auth" where ("user_id" -> user_id) select (DB2JsValue(_))).toList match {
-				case head :: Nil => (Some(head), None)
+			(from db() in "users" where ("wechat_id" -> user_id) select (x => x)).toList match {
+				case head :: Nil => {
+					(data \ "screen_name").asOpt[String].map (x => head += "screen_name" -> x).getOrElse(Unit)	
+					(data \ "screen_photo").asOpt[String].map (x => head += "screen_photo" -> x).getOrElse(Unit)	
+					(data \ "gender").asOpt[Int].map (x => head += "gender" -> x.asInstanceOf[Number]).getOrElse(Unit)	
+					(data \ "start_in").asOpt[Long].map (x => head += "start_in" -> x.asInstanceOf[Number]).getOrElse(Unit)	
+					(data \ "expired_in").asOpt[Long].map (x => head += "expired_in" -> x.asInstanceOf[Number]).getOrElse(Unit)	
+					(data \ "auth").asOpt[Int].map (x => head += "auth" -> x.asInstanceOf[Number]).getOrElse(Unit)	
+					
+					_data_connection.getCollection("users").update(DBObject("wechat_id" -> user_id), head)
+					(Some(DB2JsValue(head)), None)
+				}
 				case _ => throw new Exception("unknown user")
 			}
 			
@@ -127,7 +152,7 @@ object AuthModule extends ModuleTrait {
 		builder += "start_in" -> -1
 		builder += "expired_in" -> -1
 		builder += "register" -> d
-		builder += "auth" -> AuthStatus.normal
+		builder += "auth" -> AuthStatus.normal.t
 		
 		builder.result
 	}

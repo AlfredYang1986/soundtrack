@@ -73,6 +73,11 @@ object PayloadModule extends ModuleTrait {
 		
 			(from db() in "payload" where ("payload_id" -> payload_id) select (x => x)).toList match {
 				case head :: Nil => {
+					(data \ "title").asOpt[String].map (x => head += "title" -> x).getOrElse(Unit) 
+					(data \ "sub_title").asOpt[String].map (x => head += "sub_title" -> x).getOrElse(Unit) 
+					(data \ "cover_pic").asOpt[String].map (x => head += "cover_pic" -> x).getOrElse(Unit) 
+					(data \ "path").asOpt[String].map (x => head += "path" -> x).getOrElse(Unit) 
+					(data \ "message_id").asOpt[String].map (x => head += "message_id" -> x).getOrElse(Unit) 
 					(Some(DB2JsValue(head)), None)		
 				}
 				case _ => throw new Exception("service not existing")

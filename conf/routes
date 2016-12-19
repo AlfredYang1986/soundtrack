@@ -3,7 +3,7 @@
 # ~~~~
 
 # ajax call
-POST 	/auth/push					controllers.ajax.AuthController.authWithWechat
+POST 	/auth					 	controllers.ajax.AuthController.authWithWechat
 POST	/auth/update				controllers.ajax.AuthController.authUpdateUser 
 POST	/auth/query					controllers.ajax.AuthController.authQueryUser
 
