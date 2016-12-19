@@ -1,7 +1,19 @@
-@(message: String)
+@(title : String)(user : play.api.libs.json.JsValue)(lst : List[play.api.libs.json.JsValue])
 
-@main("Welcome to Play") {
+@main(title) {
+	<p>should be thumbs here</p>
 
-    @play20.welcome(message)
+	<div>
+		<img src="" style="width: 50px; height: 50px" />
+		<div>
+			<span>name</span><span>gender</span>
+			<span>auth</span>
+			<span>expired</span>
+		</div>
+		<div>
+			<span><img src="" style="width: 50px; height: ">entry for system note</span>
+		</div>
+	</div>
 
+	@payload_lst(lst)
 }
