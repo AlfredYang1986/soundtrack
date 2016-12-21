@@ -29,6 +29,7 @@ object ErrorCode {
   		new ErrorNode("wrong input", -18, "arguments error for server invoke"),
   		new ErrorNode("em register error", -19, "em register error"),
   		new ErrorNode("not allowed", -20, "service cannot operate"),
+  		new ErrorNode("upload error", -21, "upload error"),
 
   		new ErrorNode("unknown error", -999, "unknown error")
   	)

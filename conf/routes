@@ -26,8 +26,12 @@ POST	/comment/top				controllers.ajax.CommentsController.queryTopComments
 POST	/comment/update				controllers.ajax.CommentsController.updataComment
 POST	/comment/like				controllers.ajax.CommentsController.likeComment
 
+POST	/file/upload				controllers.ajax.FileUploadController.upload
+GET		/file/download/:name		controllers.ajax.FileUploadController.downloadFile(name)
+
 # pages
 GET		/index						controllers.pages.HomeController.index
+GET		/test						controllers.pages.HomeController.uploadTest
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

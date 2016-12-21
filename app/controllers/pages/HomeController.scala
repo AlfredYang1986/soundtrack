@@ -12,4 +12,8 @@ object HomeController extends Controller {
 				(toJson(Map("name" -> "abcde")))
 				(toJson(Map("name" -> "abcde")) :: toJson(Map("name" -> "abcde")) :: Nil))
 	}
+	
+	def uploadTest = Action {
+		Ok(views.html.fileuploadtest("file upload test"))
+	}
 }
