@@ -16,4 +16,8 @@ object HomeController extends Controller {
 	def uploadTest = Action {
 		Ok(views.html.fileuploadtest("file upload test"))
 	}
+
+	def audioplayTest = Action {
+		Ok(views.html.audioplay("audio play test")("test"))
+	}
 }

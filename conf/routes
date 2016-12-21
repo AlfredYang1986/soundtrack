@@ -32,6 +32,7 @@ GET		/file/download/:name		controllers.ajax.FileUploadController.downloadFile(na
 # pages
 GET		/index						controllers.pages.HomeController.index
 GET		/test						controllers.pages.HomeController.uploadTest
+GET		/test/audioplay				controllers.pages.HomeController.audioplayTest
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
