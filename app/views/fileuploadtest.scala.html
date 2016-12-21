@@ -21,13 +21,14 @@
 		    $('#fileupload').fileupload({
 		        url: url,
 		        dataType: 'json',
-		        maxFileSize: 9999,
 		        done: function (e, data) {
-		        	alert(data)
+		        	$.each(data.result.result, function(index, tmp){
+		        		alert(tmp);
+		        	});
 		        },
 		        progressall: function (e, data) {
 		            var progress = parseInt(data.loaded / data.total * 100, 10);
-
+		            console.log("current porgress is " + progress);
 		        }
 		    }).prop('disabled', !$.support.fileInput)
 		        .parent().addClass($.support.fileInput ? undefined : 'disabled');
