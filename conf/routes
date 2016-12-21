@@ -30,9 +30,12 @@ POST	/file/upload				controllers.ajax.FileUploadController.upload
 GET		/file/download/:name		controllers.ajax.FileUploadController.downloadFile(name)
 
 # pages
-GET		/index						controllers.pages.HomeController.index
+GET		/index/:wechatid			controllers.pages.HomeController.index(wechatid)
 GET		/test						controllers.pages.HomeController.uploadTest
 GET		/test/audioplay				controllers.pages.HomeController.audioplayTest
+
+GET		/queryWechatAuthCode		controllers.pages.HomeController.queryWechatAuthCode
+GET		/queryWechatOpenID			controllers.pages.HomeController.queryWechatOpenID(code, status="")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
