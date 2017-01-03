@@ -1,0 +1,32 @@
+@(contents : List[play.api.libs.json.JsValue])
+
+<div class="detail col-xs-12">
+    <div class="cricle-outline pull-left">
+            <!-- Play Filled icon by Icons8 -->
+        <img class="icon icons8-Play-Filled"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABfklEQVRoQ+3Y4VHDMAwF4KdN6QYwAe0G7QawAWxQNqAbwAYwgbl3Z//jSpxI1kuoB0j1VU70bMNGlm3EgRtErZP/ryOllEczO6h1otUzuSOllALgA8DOzM5qoF5Iq/8FwIOZESax5kJa8XsAJzP7ytYshbB+doXdYZfSlgekFc/3hqD3DI0npNV/BHAYvd0iIATxnbk3s+dR3YmCtPq5zbjdwj/X0ZAGeqqgsK/bKEjbbseodDAS0roTkg4yICHpIBPimg4UIC7pQAWyOB2oQWanA1VIdzpQhnSlgzVAJqWDNUEYQBlEf405a4BcKuBq8FSGfFcAA+efSxVyArDvOZypQd5qF7qPyyqQzwqYfYGhAOHtJc8piw5dmZDX2gWXS74MCLfRnfc5fiSEn1NuId5Ouq9RkKtT2UMVDZk0lZUhXVNZFdI9ldUgs6eyCmTxVFaAuEzlTIjrVM6AhEzl0RCeD0Km8lCIx49FPmPyZI8swuPZN4jHv+j5jM105AedROwzTvmFegAAAABJRU5ErkJggg=="
+        width="30" height="30">
+        <img src="@routes.Assets.at("images/user-image.png")" alt="user" width=100 />
+        <div class="mask"></div>
+    </div>
+    <div class="title pull-left">
+        新锐中产不信学历信情商
+        <div class="detail-info">
+            <div class="with-icon">
+                <img class="icon icons8-Play"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAE8klEQVRoQ91aXVIiVxT+zm2o6JNmBcEVqC+pahIMFuY5MysQVxBcgbKC0RUM7mDyHCmIJFA1L8IKZFYQ86Qp6T6pc7tv2zCN3L6IWukXiur7c75zvnv+bhOe4el0rjeD4v0vxCgxUJVfEEpTSzPGTBgT0JVf72Htt/393dtltyfXBbTQhX8PgbBOoB2XdRg8BFTLm3xz4QomN4DOYFAKH/hXAHUQbUaC8xdm6op2Q8L454rfnQUkgCeF+x1lrERcBei7aDqLJVqqSOf7vj/Oo4xcANq9wQmYG0ZwZlwwoZUlsI0Qv/cGQrc6EQ4TIERntYrftJkvY6wAdP76vBOEk4+GKiK4V8RpXm3NE0qsGjzg1AARankFem+z/kIA7atBHeAPsdZHSnn1/R++H9pqKM84UVQYBi0A2xGt6Li258v/uc+TALTwhI8xz89rlXIjj0CuY9u9/hlAcs4AxtFTIOYCmBJ+wSKugj41z3b/TAC2k1cheHrNtBzM/P5gr/xpds+vAGgeBpOO5vwraH5WwAQE860q0u7swf4KwGWvfx15G34xzi+ypDkT4p0OKuXd9PgpAO3e4BTACYBRreI7RddFwri+b/cG4vm2ATRrFV/k1E8CII6w10IdpbzdVblKVwCxi70W95qmUgIgMRPj4mDPr9tupK3GvKGC9aZrPmO71+XVoBUHu8QKGoDkKaF3d6O1X8CWTQQ0mya0Y75lRY2DH/0LW4HyjtMsmeBGWyFY3xKFaQDtP/sNMH2QFCGP9vXcx3MTxx0eMujYNT9aBCqxQuwhNQDjeUJgP+/GswASAViySzTzWHOR8PJeEkAFdIxHIk2fwv3fkhLXKuXpIsRixbkAdBrAt8iZXVpsiXavP5ZUXE3WviUTKFzok0WhTAGkGgMfZ0VSG4FnxxgaSXSmJHFyjLpPWmBmZwa6XgFHy9IqlWI0qd0bSPX0kwv/rS0wq0Lms2XcrjkHAP4QCt1IAV6r+Atrgyxz57HA1Pwl3G5ybhljsQDLwi8OIEYj3sTF7Rq5Xx2Aq9t9cwDy1tlvCcAoBBoOAVRTX9yoDgovfQaY8Q8BjUVFe5bjSAff13Gj4HM1WT91zV6n3ajpALxAIBO/rQqoP28gi1snK00ldOsRjZWkEumgUNvzt/LmJk8FMs1zgrQKkxIw7/qZwTMOvjqZi9MBXW+6pBPzAOR1i7bAUvzXdfuzFzTSEHBxi7YAMgsa3ev37sdE2HAtKZdxi7bCm5JS9vKCtVJSUkY0ivqReQ9zRCHeXMYt2gKYW9TLAnGLe6it8IbbKlr7RewYV5zZ2MrqgNlqaVXjHjuGcxpbZuPHDtjbay1mdQwzm7tBEHSFSm+puTtLHaPw/197PaFS+nbGMU9a5jzY3lHYXzExn9X2ysfLCGU7t33Vlzu56DrL9YrJbHZ51X8HkDRVN/TtoSocrapznb4NFc4DXF+UAFp1IuIIKNc70p8XrTxr2zBq7eMEBNMVH6kC3tmk3VYAUi72VNJi7aFiICHhIm85aNbTiRnj0Ajukr3mAmAidjjhBjPJDbsBIp8HdFmhq0IeU7A+mq22JN9i7247VFSiEFUAVfNBiBFcFdCy0Xr6LOUGYCbrOqJ4VweTmD2iVv5nBMaZCtY+uZaXzgDSskbZ7F2VSH+1UgW4lHzIkQzkLwBFlmIeesF611Xo9N7/AdDIXD8xivH7AAAAAElFTkSuQmCC"
+                width="30" height="30">
+                <label> 1.4万</label>
+            </div>
+            <div class="with-icon">
+                <img class="icon icons8-Speech-Bubble"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEiElEQVRoQ+1ZW3IaVxA9fQdVyV+WVxC8AuGfVIYELAL+jrQC4xUgryDjFURegfAKRL7DFIhxmFR+DCsIWYGVL7lKMJ3qeWnEax4MMqEynzNz+/a53bcfpwl78tCe4MD/QHbNkrlZpGfbRb6jYyYuMXAiQIlRBKHogmZMmDBx3wN9YhrRAY9ruu6+2/TZCIgo79xxiwknBCplUYbBIwJ1VAEfNgGVCchvln1C4BaBTiPKjwHug2nkECavKnp/GTBZq1xLcQkgsdxx8B+DOwx6v2rtuoNKBUQsMJviknzXAfhvgNqqgHbW03StOkUT4CZA33heiL5WwJs0MhMD6Vp/tIgdA0RHLgAmo17V21ncadUac2A3QWy4gJhvmJTRqHz3PskesUB6vU9Hs8LtZcSN3tUrupFEeNZ/TMsW+T/7QaKtZodva7UXN5ldywfR8y/yWCmtWfv+21FWBdOs6/3+Z8lxph2xjgQEbfqktg7MSossgJgensSdShpFk/wrOjiFLxI0juPArATStYZXvjuN1VcAEQCdA9NpVMpnyw5hKZCIj35VEMvAAFh6RxeAeL45+8SMf7QDlNKEwCTukvUfN/TfYUSEp6qA5/N6LQDpWnbPzRPEb+s/lC+ybryNdebH4TmYfpE806jotegeD4C4WRfoSZ6oV8pejbRjj2kNJxLJHKAWrQAeAOkO7DYRXoPxJu9kl9d5eEkTl8z40KjqzUBuCMSPDp/lbjSq+lFeG29DTndg37h3ZXr4LEgJIZDuYHhKRFfzSLehyKYyA89h5rNGtdwReSEQ0xpeANSKftx0w22tDw49GoojQGzJoC+V0l48VhmSFWiQIgBc1yu618QFwkzLA1Kv6LGFZFYF8lxnWjavAiIf8B8DEuobtcjeANkb19qby+51ZTuc1YNgsTb87k1CdDtC7cuEwFyvlp/lGSrzlmUOhp+FBFlaoshme1E0CpCwjGdM6lX9ed4nmYc8c2D/JTTs2jJeNgoy/C43VtGMvlDGBy/ClhLMSivUdqXucuur2bTn3o0kra5rlbCljOeT8nCXOBlz1FQy8uE+VnvdYhyfFKfEpt+jIJj510a1HCXOQ/FrK13TsoVVjCXHNlV21fo0JOFaIF5uuW0T0U8yqFGadvZYd8a7E7Mrf1AUy68l6j2C7tE/OaNe0d9tywp+5BQC2yXKpfXWZofncXRtIiCucJ+92GbP0v1ovyYHhlhBSBBSbCTl1hIDCViWZTF8E+v4gx6hoITmCbi0a1VAMw3LmRjIKj4p0iobYH7KikbK4cmP1fL1PEA5DNZujx1FRXK4ND97lKjERBdbHb0to2BCEAP7EiTjs0zPGIAMQzOP72TXRBa5d6uHVGp0pig+LXNAIioxo0j3bvLSg+fOG4NRdJ+ZR9oBjdK4z7pjSgRkvir2gbXAfB7MFJUqnD5WaF4GKBZIyCH5w0nAkZl6mF3Fr7XZk2ZceMzkdCkWxQIJxwyLQq8dwMhyMVPol/jXuBLF7ePdmE4YMfMNKfSVRp28fDuxpjE/xlokr422LWdvgPwLIRKuUR2ENnYAAAAASUVORK5CYII="
+                width="30" height="30">
+                <label>234</label>
+            </div>
+            <div class="date pull-right">
+                2016-12-25 07:00
+            </div>
+        </div>
+    </div>
+</div>

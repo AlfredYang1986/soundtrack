@@ -30,7 +30,7 @@ object HomeController extends Controller {
 	val weixin_jsapi = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token="
 	
 	def index(wechatid : String) = Action {
-		Ok(views.html.index("soundtrack")
+		Ok(views.html.homepage("soundtrack")
 				(toJson(Map("name" -> "abcde")))
 				(toJson(Map("name" -> "abcde")) :: toJson(Map("name" -> "abcde")) :: Nil))
 	}
@@ -42,13 +42,14 @@ object HomeController extends Controller {
 	def audioplayTest = Action {
 		Ok(views.html.audioplay("audio play test")("test"))
 	}
-	
+
 	/**
 	 * wechat oauth
 	 */
 	def queryWechatAuthCode = Action {
-		val redirect_uri = "http://10.6.20.42:9000/queryWechatOpenID"
-		val authCodeUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + URLEncoder.encode(app_id) + "&redirect_uri=" + URLEncoder.encode(redirect_uri) + "&response_type=code&scope=snsapi_base"
+		val redirect_uri = "http://10.6.20.42:9999/queryWechatOpenID"
+		println(URLEncoder.encode(redirect_uri))
+		val authCodeUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + URLEncoder.encode(app_id) + "&redirect_uri=" + URLEncoder.encode(redirect_uri) + "&response_type=code&scope=snsapi_base#wechat_redirect"
 		
 		Redirect(authCodeUrl)
 	}
@@ -57,6 +58,6 @@ object HomeController extends Controller {
 		val url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + app_id + "&secret=" + app_secret + "&code=" + code + "&grant_type=authorization_code"
 		val openid = ((HTTP(url)).get(null) \ "openid").asOpt[String].get
 		
-		Redirect("http://10.6.20.42:9000/index/" + openid)
+		Redirect("http://10.6.20.42:9999/index/" + openid)
 	}
 }

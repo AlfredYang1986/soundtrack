@@ -1,0 +1,303 @@
+body {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+}
+label {
+  font-weight: 400;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.header {
+  padding: 15px 25px;;
+  background: #443f3f;
+  color: white;
+}
+.header h1 {
+  font-size: 40px;
+  display: inline-block;
+  margin-left: 19px;
+  border-left: 1px solid #2d2929;
+  padding: 10px 20px;
+}
+.header img:first-child {
+  margin-top: -15px;
+}
+.header img {
+  margin-top: 10px;
+}
+.main-ad {
+  height: 300px;
+  background-image: url("../images/main.png");
+  background-size: cover;
+}
+.user {
+  padding: 30px 25px;
+  box-shadow: 0px 5px 23px rgba(183, 174, 174, 0.5) 
+}
+.user img:first-child {
+  vertical-align: -17px;
+  border-radius: 7px;
+}
+.info {
+  margin-left: 28px;
+  display: inline-block;
+}
+.info div {
+  letter-spacing: 1.8px;
+  font-size: 25px;
+}
+.info label {
+   font-size: 35px; 
+}
+.info span {
+   font-size: 27px; 
+   margin-left: 16px;
+   color: #c1b7b7;
+}
+.info label:nth-child(2) {
+  width: 32px;
+  height: 32px;
+  background-color: #638dec;
+  border-radius: 45px;
+  top: -33px;
+  position: relative;
+}
+.info img:nth-child(2) {
+  vertical-align: 0;
+}
+.info label img {
+  margin-left: 5px;
+  margin-top: 4px;
+}
+.message {
+  padding-left: 42px;
+  border-left: 1px solid rgba(193, 183, 183, 0.4);
+}
+.message img {
+  margin-top: 11px;
+}
+.message label {
+  width: 40px;
+  height: 40px;
+  background-color: #e83a3a;
+  border-radius: 45px;
+  position: relative;
+  top: -37px;
+  right: 14px;
+}
+.message span {
+  font-size: 25px;
+  margin-left: 9px;
+  color: white;
+}
+.message p {
+  font-size: 25px;
+  color: #c1b7b7;
+}
+.vip-session {
+  margin-top: 23px;
+}
+.vip-session p {
+  font-size: 25px;
+  padding: 20px 20px;
+  border-bottom: 1px solid #cecdcd;
+  color: #9d9d9d;
+}
+.vip-session p img {
+  margin-right: 14px;
+}
+.media {
+  padding: 0 25px 15px;
+}
+.detail {
+  display: inline-block;
+  margin-top: 56px;
+}
+.cricle-outline {
+  width: 120px;
+  height: 120px;
+  border: 1px solid  #ccc;
+  border-radius: 61px;
+  position: relative;
+}
+.cricle-outline img:first-child {
+  position: absolute;
+  z-index: 1;
+  top: 36px;
+  left: 40px;
+}
+.cricle-outline img {
+  border-radius: 75px;
+  margin: 9px auto;
+  display: block;
+}
+.mask {
+  background: rgba(128, 128, 128, 0.6);
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 60px;
+}
+.title {
+  font-size: 30px;
+  border-bottom: 2px solid rgba(210, 204, 204, 0.5);
+  padding: 0 0 10px 5px;
+  margin-left: 5px;
+}
+.with-icon {
+  display: inline-block;
+  margin-right: 20px;
+  color: #9d9d9d;
+}
+.with-icon img {
+  margin-right: 5px;
+}
+.date {
+  padding-left: 310px;
+  color: #9d9d9d;
+}
+.detail-info {
+  margin-top: 23px;
+}
+.icons8-Delete-Filled{
+  width: 50px;
+  height: 50px;
+}
+@media screen and (max-width: 375px) {
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+  .header {
+    padding: 10px 25px;
+  }
+  .header img:first-child {
+    margin-top: -10px;
+  }
+  .header h1 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .header img {
+    margin-top: 7px;
+  }
+  .main-ad {
+    height: 130px;
+  }
+  .user {
+    padding: 15px 15px;
+  }
+  .user img:first-child {
+    width: 50px;
+    vertical-align: -6px;
+  }
+  .info {
+    margin-left: 14px;
+  }
+  .info span {
+    margin-left: 7px;
+  }
+  .info span, .info label {
+    font-size: 12px;
+  }
+  .info img:nth-child(2) {
+    width: 70px;
+  }
+  .info label:nth-child(2) {
+    width: 16px;
+    height: 16px;
+    right: 10px;
+    top: -7px;
+  }
+  .info label img {
+    margin-left: 1px;
+    margin-top: 3px;
+    width: 13px !important;
+    height: 13px;
+  }
+  .info img:nth-child(2) {
+    vertical-align: -3px;
+  }
+  .message {
+    padding-left: 15px;
+  }
+  .message img {
+    width: 30px !important;
+    height: 30px;
+  }
+  .message label {
+    width: 15px;
+    height: 15px;
+    right: 7px;
+    top: -18px;
+  }
+  .message span {
+    font-size: 11px;
+    margin-left: 3px;
+  }
+  .message p {
+    font-size: 11px;
+  }
+  .vip-session p {
+    padding: 15px;
+    font-size: 16px;
+  }
+  .vip-session p img {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+  .cricle-outline {
+    width: 60px;
+    height: 60px;
+  }
+  .cricle-outline img:first-child {
+    top: 18px;
+    left: 20px;
+    width: 20px;
+    height: 20px;  
+  }
+  .cricle-outline img {
+    width: 50px;
+    margin: 4px auto;
+  }
+  .mask {
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+  }
+  .media {
+    padding: 0 15px 15px;
+  }
+  .title {
+    font-size: 14px;
+  }
+
+  .with-icon {
+    margin-right: 15px;
+  }
+  .with-icon img {
+    width: 15px;
+    height: 15px; 
+  }
+  .date {
+    padding-left: 60px;
+  }
+  .detail {
+    margin-top: 25px;
+  }
+  .detail-info {
+    font-size: 12px;
+  }
+  .title {
+    padding-bottom: 0;
+  }
+}

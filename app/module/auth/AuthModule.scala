@@ -132,7 +132,7 @@ object AuthModule extends ModuleTrait {
 			}
 			
 		} catch {
-			case ex : Exception => (None, Some(ErrorCode.errorToJson("wrong input")))
+			case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
 		}
 	}
 	

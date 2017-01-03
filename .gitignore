@@ -8,6 +8,8 @@
 /.classpath
 /.settings
 /lib
+/.idea
+/.idea_modules
 
 .DS_Store
 
