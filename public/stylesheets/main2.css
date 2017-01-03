@@ -1,0 +1,198 @@
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+    }
+    
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
+/**
+.main-nav-container {
+	position: relative;
+}
+
+.main-nav-logo {
+	position: absolute;
+	left: 20px;
+	top: 5px;
+	margin-top: 30px;
+}
+
+.main-nav-bar {
+	background-image: none !important;
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	margin-top: 30px;
+	width: 100%;
+	height: 100px;
+	position: relative;
+}
+
+.navbar-nav>li>a {
+	font-size: 18px;
+	color: #008bdc !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	font-weight: 400 !important;
+	margin-top: 30px;
+}
+
+.navbar-nav>.active>a {
+	font-size: 24px;
+	color: #008bdc !important;
+}
+
+
+.sub-main-page {
+	background: url('/assets/images/main-banner.png') no-repeat center center;
+	padding-top:140px;
+	height:100vh;
+	min-height:400px;
+	background-size:cover;
+}
+**/
+
+
+
+
+.content-bkg {
+	background-image: url("/assets/images/company-content-bkg.jpg");
+	background-repeat: no-repeat;
+	min-height: 500px;
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	-moz-background-size:100% 100%;
+	background-size:100% 100%;
+}
+
+.content-bkg1 {
+	margin-top: -100px;
+}
+
+.another-bkg {
+	background-image: url("/assets/images/another-bkg.png");
+	background-repeat: no-repeat;
+	min-height: 875px;
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	-moz-background-size:100% 100%;
+	background-size:100% 100%;
+	margin: 30px;
+}
+
+.help-title {
+	text-align: center;
+}
+
+.third-bkg {
+	background-color: white;
+	min-height: 380px;
+	margin: 30px;
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	-moz-background-size:100% 100%;
+	background-size:100% 100%;
+	padding-left: 45px !important;
+	padding-right: 45px !important;
+}
+
+.main-container {
+	background-color: #008bdc;
+	width: 100%;
+	height: 200px;
+	position: relative;
+}
+
+.company-text {
+	margin-top: 60px; 
+	font-size: 14px;
+}
+
+/**
+	Certificate Page CSS
+**/
+
+.business-license-btn {
+	text-align: center;
+}
+
+.business-license-btn>button {
+	border: 1px solid #008bdc;
+	background-color: #008bdc; !important;
+	background-image: none !important;
+	color: white;
+	border-radius: 0px !important;
+}
+
+.road-license-btn {
+	text-align: center;
+}
+
+.road-license-btn>button {
+	border: 1px solid #008bdc;
+	background-color: #008bdc !important;
+	background-image: none !important;
+	color: white;
+	border-radius: 0px !important;
+	width: 400px;
+	min-width: 250px;
+}
+
+.verifiable-code-btn>button {
+	border: 1px solid #008bdc;
+	background-color: #008bdc; !important;
+	background-image: none !important;
+	color: white;
+	border-radius: 0px !important;
+}
+
+.register-btn{
+	text-align: center;
+}
+
+.register-btn>button {
+	border: 1px solid #008bdc;
+	background-color: transparent !important;
+	background-image: none !important;
+	width: 150px;
+}
+
+.validate-error {
+	border: 1px solid red !important;
+}
+
+/**Admin login page css**/
+
+.admin-bg{
+	background-image: url("/assets/images/admin/admin-main-bg.png");
+	background-repeat: no-repeat;
+	min-height: 875px;
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	-moz-background-size:100% 100%;
+	background-size:100% 100%;
+	margin: 30px;
+}
+
+.admin-login-cell {
+	background-image: none !important;
+	background-color: rgba(255, 255, 255, 0.5) !important; 
+	margin: 400px auto;
+}
+
+.admin-login-btn {
+	text-align: center;
+	margin: 0 auto !important;
+	color: black !important;
+	font-size: 18px;
+	max-width: 405px;
+	height: 35px;
+	border: 1px solid #000;
+	background-color: transparent !important;
+	background-image: none !important;
+	border-radius: 0px;
+	float: none !important;
+}

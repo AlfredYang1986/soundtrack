@@ -29,6 +29,7 @@ object AuthModule extends ModuleTrait {
 		case msg_authCreateUser(data) => authCreateUser(data)
 		case msg_authCheck(data) => authCheck(data)
 		case msg_queryUser(data) => queryUser(data)
+		case msg_queryUserByToken(data) => queryUserByToken(data)
 		case msg_authUpdateUser(data) => authUpdateUser(data)
 		case msg_authWithWechat(data) => authWithWechat(data)
 		
@@ -42,6 +43,7 @@ object AuthModule extends ModuleTrait {
 
 		builder += "screen_name" -> "admin"
 		builder += "screen_photo" -> "admin"
+		builder += "pwd" -> "admin"
 		builder += "gender" -> 0
 		
 		val d = new Date().getTime
@@ -107,6 +109,20 @@ object AuthModule extends ModuleTrait {
 				case _ => throw new Exception("unknown user")
 			}
 			
+		} catch {
+			case ex : Exception => (None, Some(ErrorCode.errorToJson("wrong input")))
+		}
+	}
+
+	def queryUserByToken(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
+		try {
+			val wechat_id = (data \ "token").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
+
+			(from db() in "users" where ("token" -> wechat_id) select (DB2JsValue(_))).toList match {
+				case head :: Nil => (Some(head), None)
+				case _ => throw new Exception("unknown user")
+			}
+
 		} catch {
 			case ex : Exception => (None, Some(ErrorCode.errorToJson("wrong input")))
 		}

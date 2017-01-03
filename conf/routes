@@ -3,6 +3,7 @@
 # ~~~~
 
 # ajax call
+POST    /auth/admin/login           controllers.ajax.AdminController.AdminLogin
 POST 	/auth					 	controllers.ajax.AuthController.authWithWechat
 POST	/auth/update				controllers.ajax.AuthController.authUpdateUser 
 POST	/auth/query					controllers.ajax.AuthController.authQueryUser
@@ -40,6 +41,8 @@ GET		/queryWechatAuthCode		controllers.pages.HomeController.queryWechatAuthCode
 GET		/queryWechatOpenID			controllers.pages.HomeController.queryWechatOpenID(code, status="")
 
 GET     /admin/login                controllers.pages.AdminController.AdminLoginPage
+GET     /admin/index                controllers.pages.AdminController.AdminIndex(t="")
+GET     /admin/index/:t             controllers.pages.AdminController.AdminIndex(t)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

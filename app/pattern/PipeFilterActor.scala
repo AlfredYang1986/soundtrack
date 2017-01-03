@@ -18,6 +18,7 @@ import module.auth.{ msg_AuthCommand, AuthModule }
 import module.payload.{ msg_PayloadCommand, PayloadModule }
 import module.comments.{ msg_CommentsCommand, CommentsModule }
 import module.systemnotify.{ msg_SystemNotifyCommand, SystemNotifyModule }
+import module.admin.{ msg_AdminCommand, AdminModule }
 
 object PipeFilterActor {
 	def prop(originSender : ActorRef, msr : MessageRoutes) : Props = {
@@ -51,6 +52,7 @@ class PipeFilterActor(originSender : ActorRef, msr : MessageRoutes) extends Acto
 		case cmd : msg_CommentsCommand => dispatchImpl(cmd, CommentsModule)
 		case cmd : msg_SystemNotifyCommand => dispatchImpl(cmd, SystemNotifyModule)
 		case cmd : msg_ResultCommand => dispatchImpl(cmd, ResultModule)
+		case cmd : msg_AdminCommand => dispatchImpl(cmd, AdminModule)
 		case cmd : ParallelMessage => {
 		    cancelActor
 			next = context.actorOf(ScatterGatherActor.prop(originSender, msr), "scat")

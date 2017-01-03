@@ -1,0 +1,69 @@
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+    }
+    
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
+.certificate-body {
+	background-color: transparent !important;
+	background-image: url("/assets/images/certification/certification-bg.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.certificate-nav {
+	background-color: transparent !important;
+	width: 100%;
+	height: 200px;
+	position: relative;
+}
+
+.certificate-nav-logo-container {
+	position: absolute;
+	left: 100px;
+	top: 20px;
+	width: 300px;
+	height: 100px;
+
+}
+
+.certificate-nav-bar {
+	background-color: transparent !important;
+	border: none !important;
+	background-image: none !important;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.nav.navbar-nav li a{
+	color: #008bdc !important;
+	font-size: 18px !important;
+}
+
+.certificate-content-container {
+	margin-top: 0px;
+	width: 100%;
+	height: 800px;
+	background-color: transparent !important;
+	background-image: url("/assets/images/certification/transparency-bg.png");
+	background-size: 100% 800px;
+	background-repeat: no-repeat;
+}
+
+.certificate-pane {
+	margin: 0 auto;
+	width: 1024px;
+	height: 700px;
+	background-color: white;
+}
+
+.certificate-pane-head {
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid blue;
+}

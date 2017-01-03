@@ -10,6 +10,7 @@
 /lib
 /.idea
 /.idea_modules
+/public/images
 
 .DS_Store
 
