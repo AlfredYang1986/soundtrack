@@ -43,6 +43,8 @@ GET		/queryWechatOpenID			controllers.pages.HomeController.queryWechatOpenID(cod
 GET     /admin/login                controllers.pages.AdminController.AdminLoginPage
 GET     /admin/index                controllers.pages.AdminController.AdminIndex(t="")
 GET     /admin/index/:t             controllers.pages.AdminController.AdminIndex(t)
+GET     /admin/payload/push         controllers.pages.AdminController.AdminPushPayload(t="")
+GET     /admin/payload/push/:t      controllers.pages.AdminController.AdminPushPayload(t)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,95 @@
+@(title: String)
+
+@admin_main(title) {
+    <link rel="stylesheet" media="all" href="@routes.Assets.at("stylesheets/fileinput.min.css")">
+    <script src="@routes.Assets.at("javascripts/fileinput.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/upload-image.js")"></script>
+} {
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">上传音频文件</h1>
+            </div>
+        </div>
+
+        <div class="form-group col-sm-9">
+            <span class="glyphicon glyphicon-star col-sm-1 control-label"></span>
+            <label for="company-name" class="col-sm-1 control-label">音频标题</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" data-name='title' placeholder="音频标题（必填）"/>
+            </div>
+        </div>
+
+        <div class="form-group" style="display: none;" data-name='title-error'>
+            <span class="col-sm-1 control-label"></span>
+            <label for="company-name" class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    请输入上传音频的标题
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-sm-9">
+            <span class="glyphicon glyphicon-star col-sm-1 control-label"></span>
+            <label for="company-name" class="col-sm-1 control-label">音频描述</label>
+            <div class="col-sm-9">
+                <textarea type="description" data-name='description' class="form-control" rows="3" placeholder="音频描述（必填）"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group" style="display: none;" data-name='description-error'>
+            <span class="col-sm-1 control-label"></span>
+            <label for="company-name" class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    请输入上传音频的描述
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9 business-license-btn">
+            <input id="file_upload" type="file" multiple=true class="file-loading" />
+        </div>
+
+        <div class="form-group">
+            @*<div class="col-sm-offset-2 col-sm-4 register-btn">*@
+                @*<button type="submit" class="btn btn-lg company-mb " onclick="reset()">上一步</button>*@
+            @*</div>*@
+            <div class="col-sm-offset-2 col-sm-4 register-btn">
+                <button type="submit" class="btn btn-lg company-mb " style="margin-top: 30px" onclick="pushPayload()">上传</button>
+            </div>
+        </div>
+
+    </div>
+
+} {
+    <script type="text/javascript">
+        var file_upload = new fileUpload($("#file_upload"));
+
+        function validate(ele, result, name) {
+            if (result) $(ele).removeClass('validate-error');
+            else $(ele).addClass('validate-error');
+
+            if (name) {
+                if (result) $(String(name)).css({"display": "none"});
+                else $(String(name)).css({"display": "block"});
+            }
+
+            return result;
+        }
+
+        function hasInput(str) {
+            var result = (typeof(str) == "string") && (str != "");
+            return result;
+        }
+
+        function pushPayload() {
+            
+        }
+    </script>
+}

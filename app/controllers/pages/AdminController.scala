@@ -36,7 +36,7 @@ object AdminController extends Controller {
 				val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
 				if (status == "ok") {
 					val user = (result \ "result").asOpt[JsValue].get
-					if ((user \ "auth").asOpt[Int].get == 99) Ok(views.html.admin_index("test"))
+					if ((user \ "auth").asOpt[Int].get == 99) Ok(views.html.admin_index("管理员登录"))
 					else Redirect("/admin/login")
 
 				} else throw new Exception
@@ -47,7 +47,35 @@ object AdminController extends Controller {
 				 */
 				case ex : Exception => Ok("error 404")
 			}
+		}
+	}
 
+	def AdminPushPayload(t : String) = Action { request =>
+		var token = t
+		if(token == "") token = request.cookies.get("token").map (x => x.value).getOrElse("")
+		else Unit
+
+		if (token == "") Ok("请先登陆在进行有效操作")
+		else {
+			import pattern.ResultMessage.common_result
+			val routes = MessageRoutes(msg_queryUserByToken(toJson(Map("token" -> token))) :: msg_CommonResultMessage() :: Nil, None)
+			val result = commonExcution(routes)
+
+			try {
+				val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
+				if (status == "ok") {
+					val user = (result \ "result").asOpt[JsValue].get
+					if ((user \ "auth").asOpt[Int].get == 99) Ok(views.html.admin_push_payload("管理员发布音频"))
+					else Redirect("/admin/login")
+
+				} else throw new Exception
+
+			} catch {
+				/**
+				  * 需要一个404或者500的错误界面
+				  */
+				case ex : Exception => Ok("error 404")
+			}
 		}
 	}
 }

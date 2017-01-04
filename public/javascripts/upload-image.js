@@ -10,7 +10,7 @@ function fileUpload(ele) {
 	$(this.element).fileinput({
 		language: "ca",
 	    uploadUrl: "/file/upload",
-	    allowedFileExtensions: ["jpg", "png", "gif", "jpeg"],
+	    allowedFileExtensions: ["mp3"],
 	    minImageWidth: 50,
 	    minImageHeight: 50
 	});
