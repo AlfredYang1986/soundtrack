@@ -129,6 +129,7 @@ object PayloadModule extends ModuleTrait {
 			"cover_pic" -> toJson(x.getAs[String]("cover_pic").get),
 			"play_times" -> toJson(x.getAs[Number]("play_times").get.intValue),
 			"path" -> toJson(x.getAs[String]("path").get),
+			"date" -> toJson(x.getAs[Number]("date").get.longValue),
 			"message_id" -> toJson(x.getAs[String]("message_id").get))
 	}
 }

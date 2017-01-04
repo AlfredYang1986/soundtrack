@@ -32,6 +32,7 @@ object AuthModule extends ModuleTrait {
 		case msg_queryUserByToken(data) => queryUserByToken(data)
 		case msg_authUpdateUser(data) => authUpdateUser(data)
 		case msg_authWithWechat(data) => authWithWechat(data)
+		case msg_queryMultipleUsers(data) => queryMultipleUsers(data)
 		
 		case _ => ???
 	}
@@ -109,6 +110,21 @@ object AuthModule extends ModuleTrait {
 				case _ => throw new Exception("unknown user")
 			}
 			
+		} catch {
+			case ex : Exception => (None, Some(ErrorCode.errorToJson("wrong input")))
+		}
+	}
+
+	def queryMultipleUsers(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
+		try {
+			val take = (data \ "take").asOpt[Int].map (x => x).getOrElse(20)
+			val skip = (data \ "skip").asOpt[Int].map (x => x).getOrElse(0)
+
+			val result = Map("result" -> toJson(
+				(from db() in "users" where ("wechat_id" $ne "admin")).selectSkipTop(skip)(take)("register")(DB2JsValue(_)).toList))
+			println(result)
+			(Some(result), None)
+
 		} catch {
 			case ex : Exception => (None, Some(ErrorCode.errorToJson("wrong input")))
 		}

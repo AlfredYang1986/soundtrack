@@ -10,6 +10,7 @@ object AuthMessages {
 	case class msg_authCreateUser(data : JsValue) extends msg_AuthCommand
 	case class msg_authCheck(data : JsValue) extends msg_AuthCommand
 	case class msg_queryUser(data : JsValue) extends msg_AuthCommand
+	case class msg_queryMultipleUsers(data : JsValue) extends msg_AuthCommand
 	case class msg_queryUserByToken(data : JsValue) extends msg_AuthCommand
 	case class msg_authUpdateUser(data : JsValue) extends msg_AuthCommand
 }
