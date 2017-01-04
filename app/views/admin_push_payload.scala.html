@@ -56,6 +56,34 @@
             <input id="file_upload" type="file" multiple=true class="file-loading" />
         </div>
 
+        <div class="form-group" style="display: none;" data-name='file-upload-error'>
+            <span class="col-sm-1 control-label"></span>
+            <label for="company-name" class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    请上传音频文件
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9 business-license-btn">
+            <input id="cover_pic_upload" type="file" multiple=true class="file-loading" />
+        </div>
+
+        <div class="form-group" style="display: none;" data-name='cover-pic-upload-error'>
+            <span class="col-sm-1 control-label"></span>
+            <label for="company-name" class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    请上封面图片
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             @*<div class="col-sm-offset-2 col-sm-4 register-btn">*@
                 @*<button type="submit" class="btn btn-lg company-mb " onclick="reset()">上一步</button>*@
@@ -70,6 +98,7 @@
 } {
     <script type="text/javascript">
         var file_upload = new fileUpload($("#file_upload"));
+        var cover_pic = new fileUpload($("#cover_pic_upload"));
 
         function validate(ele, result, name) {
             if (result) $(ele).removeClass('validate-error');
@@ -89,7 +118,48 @@
         }
 
         function pushPayload() {
-            
+            var result = true;
+
+            var title = $('input[data-name="title"]').val();
+            result &= validate($('input[data-name="title"]'), hasInput(title), 'div[data-name="title-error"]');
+
+            var sub_title = $('textarea[data-name="description"]').val();
+            result &= validate($('textarea[data-name="description"]'), hasInput(sub_title), 'div[data-name="title-error"]');
+
+            var cover_pic_name = cover_pic.queryFileNames();
+            result &= validate($('#cover_pic_upload'), cover_pic_name.length == 1, 'div[data-name="cover-pic-upload-error"]');
+
+            var file_path = file_upload.queryFileNames();
+            result &= validate($('#file_upload'), file_path.length == 1, 'div[data-name="file-upload-error"]');
+
+            if (result) {
+                var query_object = new Object();
+                query_object['title'] = title;
+                query_object['sub_title'] = sub_title;
+                query_object['cover_pic'] = cover_pic_name[0];
+                query_object['path'] = file_path[0];
+
+                $.ajax({
+                    url: "/payload/push",
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json, charset=utf-8',
+                    data: JSON.stringify(query_object),
+                    cache: false,
+                    success: function (data) {
+                        if (data.status == "ok") {
+                            alert('上传成功')
+                            location.reload();
+
+                        } else {
+                            alert(data.error.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("请检查您的输入");
+                    }
+                });
+            }
         }
     </script>
 }
