@@ -75,7 +75,7 @@ object HomeController extends Controller {
 		if (token == "") Ok("请先登陆在进行有效操作")
 		else {
 			import pattern.ResultMessage.common_result
-			val routes = MessageRoutes(msg_queryUser(toJson(Map("wechat_id" -> token))) :: msg_CommonResultMessage() :: Nil, None)
+			val routes = MessageRoutes(msg_authWithWechat(toJson(Map("wechat_id" -> token))) :: msg_CommonResultMessage() :: Nil, None)
 			val result = commonExcution(routes)
 
 			try {

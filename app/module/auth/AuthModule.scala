@@ -122,7 +122,6 @@ object AuthModule extends ModuleTrait {
 
 			val result = Map("result" -> toJson(
 				(from db() in "users" where ("wechat_id" $ne "admin")).selectSkipTop(skip)(take)("register")(DB2JsValue(_)).toList))
-			println(result)
 			(Some(result), None)
 
 		} catch {
