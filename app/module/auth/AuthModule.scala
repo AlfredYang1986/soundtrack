@@ -149,13 +149,15 @@ object AuthModule extends ModuleTrait {
 
 			(from db() in "users" where ("wechat_id" -> user_id) select (x => x)).toList match {
 				case head :: Nil => {
+					println(head)
 					(data \ "screen_name").asOpt[String].map (x => head += "screen_name" -> x).getOrElse(Unit)	
 					(data \ "screen_photo").asOpt[String].map (x => head += "screen_photo" -> x).getOrElse(Unit)	
 					(data \ "gender").asOpt[Int].map (x => head += "gender" -> x.asInstanceOf[Number]).getOrElse(Unit)	
 					(data \ "start_in").asOpt[Long].map (x => head += "start_in" -> x.asInstanceOf[Number]).getOrElse(Unit)	
 					(data \ "expired_in").asOpt[Long].map (x => head += "expired_in" -> x.asInstanceOf[Number]).getOrElse(Unit)	
-					(data \ "auth").asOpt[Int].map (x => head += "auth" -> x.asInstanceOf[Number]).getOrElse(Unit)	
-					
+					(data \ "auth").asOpt[Int].map (x => head += "auth" -> x.asInstanceOf[Number]).getOrElse(Unit)
+					(data \ "last_date").asOpt[Long].map (x => head += "last_date" -> x.asInstanceOf[Number]).getOrElse(Unit)
+
 					_data_connection.getCollection("users").update(DBObject("wechat_id" -> user_id), head)
 					(Some(DB2JsValue(head)), None)
 				}
@@ -197,6 +199,7 @@ object AuthModule extends ModuleTrait {
 			"start_in" -> toJson(x.getAs[Number]("start_in").get.longValue),
 			"expired_in" -> toJson(x.getAs[Number]("expired_in").get.longValue),
 			"register" -> toJson(x.getAs[Number]("register").get.longValue),
-			"auth" -> toJson(x.getAs[Number]("auth").get.intValue))
+			"auth" -> toJson(x.getAs[Number]("auth").get.intValue),
+			"last_date" -> toJson(x.getAs[Number]("last_date").get.longValue)
 	}
 }

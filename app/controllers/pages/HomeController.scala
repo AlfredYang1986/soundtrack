@@ -110,24 +110,25 @@ object HomeController extends Controller {
 		val url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + app_id + "&secret=" + app_secret + "&code=" + code + "&grant_type=authorization_code"
 		val result = ((HTTP(url)).get(null))
 		val openid = (result \ "openid").asOpt[String].get
-		val auth_token = (result \ "auth_token").asOpt[String].get
+		val auth_token = (result \ "access_token").asOpt[String].get
 
 		val url_user_info = "https://api.weixin.qq.com/sns/userinfo?access_token=" + auth_token + "&openid=" + openid + "&lang=zh_CN"
 		val reVal = (HTTP(url_user_info).get(null))
 
 		val screen_name = (reVal \ "nickname").asOpt[String].get
 		val screen_photo = (reVal \ "headimgurl").asOpt[String].get
-		val gender = (reVal \ "sex").asOpt[String].get
+		val gender = (reVal \ "sex").asOpt[Int].get
+		val last_date = new java.util.Date().getTime
 
-		val args = toJson(Map("wechat_id" -> toJson(openid), "screen_name" -> toJson(screen_name), "screen_photo" -> toJson(screen_photo), "gender" -> toJson(gender)))
+		val args = toJson(Map("wechat_id" -> toJson(openid),
+							  "screen_name" -> toJson(screen_name),
+			 				  "screen_photo" -> toJson(screen_photo),
+							  "gender" -> toJson(gender),
+							  "last_update" -> toJson(last_date)))
 		import pattern.ResultMessage.common_result
 		val routes = MessageRoutes(msg_authUpdateUser(args) :: msg_CommonResultMessage() :: Nil, None)
 		commonExcution(routes)
 
 		Redirect("http://whq628318.cn/mp/index/" + openid)
-	}
-
-	def getUserInfo(t : String) = {
-
 	}
 }

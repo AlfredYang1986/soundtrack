@@ -12,10 +12,10 @@
     <div class="main-ad"></div>
 
     <div class="user">
-        <img src="@routes.Assets.at("images/user-image.png")" alt="user" width=120 />
+        <img src="@{(user \ "screen_photo").asOpt[String].get)}" alt="user" width=120 />
         <div class="info">
             <div>
-                <label>alfred</label>
+                <label>@{(user \ "screen_name").asOpt[String].get)}</label>
                 <label>
                     <img class="icon icons8-Male"
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAC7klEQVRoQ+2Z/VEVMRTFz6lAO1AqUCqQDpQKlArECsQK1AqUCoQKlAqECoQOtILrHLzrhLDZJPuyO28fmxn+YEhu8ss99yMLsWODO8aDFWjbPbp6aPVQdANmZi0uhWSvumaX3AqUcOfqoRY638SGmb0B8CVlY2s8VAKZg5GNxQCVwCwGaADmKJbf1ntoCIbk1zjdbzVQDkYSWwxQCcxigEphZgMys+cAXgI4APAYgH7XuPafHwDOSV7G6boGZnIgM3sF4COApyV1xeFOSJ764VJF80gJoM/mJDFkZgJQ9ZZHxgx56gzASc/iJMwkHnJ5fXdpjYEZWjMI0xzIYX4mTiQZKVYuu1jx+YonefJ1hj4L0xTIZSYYBX04zgEck1QCSA5f/8mTRzzvA8k++d2z1yyGzEwyi2PmHUkdsniY2bEnknCNvLpfbKRg4uCL1bPZt8hONUy3PgFVJLkCltspOaBfUWpWTVHKHj3MTFlOtasb1yT3RhuMFiaBEolgLxczuYN5TOmiwrHfV3xztvr+PgSkYH0fLDolqYK48TAzFc8w+xUnh9zmQ0BKxS8CA8203tP2XJAcW6zvMA4BKVV3vZkWNZNFj5ybxdEQ0J0PgqkHVU4Cqb+X1pVa+w8KSI3ks+CGppTcFclQ3rWO+T//QSWFKdN2XFxnSduSQNxhL7ewSpRmpk76SSDoM5KHowX+z6Z6w7B9uiFZ+vLNbp3r5bTx1M3pIUlJsMnI/n/IzOKOQRvrHfS55gRm9hZA/ORo1iF0ZykBkhyUwh9FALpVPSVKHnj6oBJ36X/UieTW11ya5maBPJb6EkS3lxpNeVG15PZzlbc2qmHqz1INbbO6FkIXAQWH1MFjT9Veojxz0Oq5EG9eDORQkp88EnbhNUAX8lhrmY3yULjIn+YK8DClD4HdeCJpls1Sm1V5KDbisaJg7z4Fd73fFYDfHluqXfc+Bde4tWbuRkA1G801dwWa66bH7rN6aOzNzbVu5zz0F9OYZkRyZj9gAAAAAElFTkSuQmCC"
@@ -29,7 +29,7 @@
             <img class="icon icons8-Paper-Plane"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAFTUlEQVRoQ9VZ3VHcOhQ+wn7PdhBSQfCs/ByoIHsruJsKQioAKgipIKGCQAUhz9aOkwpuqOCGd+8q83mOPFqtJMs2kMVPYK9tfTrn+5Es6BkfSqkFEX3UWv8WzxFHVVXHQogzIjrm8d8/KyB1XR+u1+vPFgBTh5tnAYQBoAJLUwGt9aUQ4oiI3gohPuw1kLquZ5vN5r3W+pSIZgChtb7I8/yyKIrfSqn/cT7LsmJvgaxWqzMbABFdZVl2XhTFLwCq6/povV7XRHQvpZztHRCl1L9EdE5Eh1yB73menxZF8cMWptVqdaq1/khEN1LKxd4AgRJBSrnv0ULfAagsy1ufsiqlrg0/5vP55V8H4pHSOyHE+Xw+/xKzBpsfqNZfA+JTIgZw6QIA6UFuc97lB84/ORAMqmmaMyEElAjHPaTUKJENAgNumuazEOIwy7JXBozLjycF4pNSViIQuZttA4Rb7ivL7k8pJTyjPVx+PBkQViK0TOsFUJosywCglVL3UEq9J6KuxeATtmq5/Hh0ICbU2VIaUyJUbb1eQ1KNgxNcG6oU48ejAfEpERGdSikhmd4D5G+a5quRX1M5eIR9g48fDw7EE+qSpJRV6JvVeq0IZFl26PLHx48HAxIKdT4lcsuxWq2WWmsk2nbwRPQCf2itT3xm6OPHZCABJfrEmWhHiTykBgDDhysiesN8+iSlNPLc3ebzD3NxtI/0hboQF3CeveQb8+EenqK1fktE4MOW1KbwY1RFUkNdhNRIrfAHhMK7LMsWm83miNsLvDiKyPJWvrLfkVwRN9Rh5hCzQ6HOB4T5AHmdIRTmeY4KQHIRx2dCiHexjBXiR1JFxoY6F0hVVUi2pu+vpJQtN6qqqrnFunO+SYjxIwpkSKjr4wO3UrtRYM+6UgpGBxdHi6GlggIR8o8g2YeEuhgAJrUJfchJ6P9jEzW40vAOciOI77kh/9gBEgl13fKyb+D2dY4nkFfkq58Mop1xjiL/MVcuyrLEijB6xPjRtZYb6piIy5B69L2UpdkMbqf3lVJQrQXeU5al2ZsKPraPHy0Qi2z4/05rvRyiRPbbeaZRhTYfuYEP56xe90aQgNptrc99vxFKKSzqX1sXf2mtr/M8v3IX/D2ktkMfFksLd0KsmcWj/omFSKdNg/6xxRF+AeQQM/nSegh6+hrAyrK8CQFxF0EwObctHTf3RpDQ8/v40XHEaQ84bzIoZxGEvSfvis+S2mAE8QFJ4YcXiAuqaZqFEAKVstuvrRQrUpAP5lmsYCD4lgT3iYbDqXb/KnRPckSBQW42GygNqmWDQvRehvrdllof+fvA9PnHFkf6HuZeZ9dHRQAoSlqlFEwPEhud0Sn86G2tGMCqqm6FEG9CCyDcW1XVOX/H6I0gU/gxCYilJNhv2tkNsaU2BjY2WX35yr43mSPuC5VSGueklDvPsHlBRLdSypOh7Yvfp/JjakW8QBy/MOP/IqV8NxRMin9MIrtJrm5WckC0Cy8hBEQBGwqDwKT6x6MAUUqZzYSO3DwgfBp4obX+kef5SWzdYQY2hB+jW8vawumSrQVix/TGgBnCj9FAjKziex7WEk6i7RZPnuiTXJkh/HgQIAcHB0jL7QZb3+ZBamWG8mMKEGOGF2x4vSBMdVLADOXHZCBW6wyK5QwGn9Ze+wRgKD9GA1FKYb3dfnXFxxqztTPEJ9g0wZkdMEP5MQVIa4ax7c0UUD4wmCD7+3nKc6YAab952zsjqS90f+eCQUpm3g1Ky6Oz1tiB++6zwXRO7Xyp6nvfXgDBIF0wKZt2Nri9AeKAQaruvuL2VQPX/wDWNXd7T6tffAAAAABJRU5ErkJggg=="
             width="60" height="60">
-            <label><span>12</span></label>
+            <label><span></span></label>
             <p>小纸条</p>
         </div>
     </div>
