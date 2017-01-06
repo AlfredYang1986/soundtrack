@@ -172,11 +172,11 @@ object AuthModule extends ModuleTrait {
 		
 		val builder = MongoDBObject.newBuilder
 		val wechat_id = (data \ "wechat_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
-		builder += "wechat_id" -> (data \ "wechat_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
+		builder += "wechat_id" -> wechat_id
 
-		builder += "screen_name" -> (data \ "screen_name").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
-		builder += "screen_photo" -> (data \ "screen_photo").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
-		builder += "gender" -> (data \ "gender").asOpt[Int].map (x => x).getOrElse(throw new Exception("wrong input"))
+		builder += "screen_name" -> (data \ "screen_name").asOpt[String].map (x => x).getOrElse("")
+		builder += "screen_photo" -> (data \ "screen_photo").asOpt[String].map (x => x).getOrElse("")
+		builder += "gender" -> (data \ "gender").asOpt[Int].map (x => x).getOrElse(0)
 		
 		val d = new Date().getTime
 		builder += "token" -> Sercurity.md5Hash(wechat_id + Sercurity.getTimeSpanWithMillSeconds)
