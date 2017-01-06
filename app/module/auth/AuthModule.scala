@@ -202,6 +202,6 @@ object AuthModule extends ModuleTrait {
 			"expired_in" -> toJson(x.getAs[Number]("expired_in").get.longValue),
 			"register" -> toJson(x.getAs[Number]("register").get.longValue),
 			"auth" -> toJson(x.getAs[Number]("auth").get.intValue),
-			"last_date" -> toJson(x.getAs[Number]("last_date").map (x => x.longValue).getOrElse(0)))
+			"last_date" -> toJson(x.getAs[Number]("last_date").map (n => n.longValue).getOrElse(0.toLong)))
 	}
 }
