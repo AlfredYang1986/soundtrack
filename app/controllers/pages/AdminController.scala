@@ -88,4 +88,5 @@ object AdminController extends Controller {
 			}
 		}
 	}
+
 }

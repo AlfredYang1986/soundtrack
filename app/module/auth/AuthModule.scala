@@ -159,7 +159,7 @@ object AuthModule extends ModuleTrait {
 					_data_connection.getCollection("users").update(DBObject("wechat_id" -> user_id), head)
 					(Some(DB2JsValue(head)), None)
 				}
-				case _ => throw new Exception("unknown user")
+				case _ => authCreateUser(data)
 			}
 			
 		} catch {

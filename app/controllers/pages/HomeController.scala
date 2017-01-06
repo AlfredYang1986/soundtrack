@@ -33,6 +33,7 @@ object HomeController extends Controller {
 	  
 	val weixin_http = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + app_id + "&secret=" + app_secret
 	val weixin_jsapi = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token="
+	val weixin_userinfo = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN"
 	
 	def index(t : String) = Action (request => checkAuth(t, request) { user =>
 		import pattern.ResultMessage.lst_result
@@ -107,8 +108,26 @@ object HomeController extends Controller {
 	
 	def queryWechatOpenID(code: String, status: String) = Action {
 		val url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + app_id + "&secret=" + app_secret + "&code=" + code + "&grant_type=authorization_code"
-		val openid = ((HTTP(url)).get(null) \ "openid").asOpt[String].get
-		
+		val result = ((HTTP(url)).get(null))
+		val openid = (result \ "openid").asOpt[String].get
+		val auth_token = (result \ "auth_token").asOpt[String].get
+
+		val url_user_info = "https://api.weixin.qq.com/sns/userinfo?access_token=" + auth_token + "&openid=" + openid + "&lang=zh_CN"
+		val reVal = (HTTP(url_user_info).get(null))
+
+		val screen_name = (reVal \ "nickname").asOpt[String].get
+		val screen_photo = (reVal \ "headimgurl").asOpt[String].get
+		val gender = (reVal \ "sex").asOpt[String].get
+
+		val args = toJson(Map("wechat_id" -> toJson(openid), "screen_name" -> toJson(screen_name), "screen_photo" -> toJson(screen_photo), "gender" -> toJson(gender)))
+		import pattern.ResultMessage.common_result
+		val routes = MessageRoutes(msg_authUpdateUser(args) :: msg_CommonResultMessage() :: Nil, None)
+		commonExcution(routes)
+
 		Redirect("http://whq628318.cn/mp/index/" + openid)
+	}
+
+	def getUserInfo(t : String) = {
+
 	}
 }
