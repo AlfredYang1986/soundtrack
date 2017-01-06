@@ -1,10 +1,10 @@
-@(contents : List[play.api.libs.json.JsValue])
+@(contents : List[play.api.libs.json.JsValue])(uid : String)
 
 @{contents map { iter =>
 <div class="detail col-xs-12">
     <div class="cricle-outline pull-left">
         <!-- Play Filled icon by Icons8 -->
-        <a href={"/mp/player/" + (iter \ "path").asOpt[String].get}>
+        <a href={"/mp/player/" + (iter \ "path").asOpt[String].get + "/" + uid}>
             <img class="icon icons8-Play-Filled"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABfklEQVRoQ+3Y4VHDMAwF4KdN6QYwAe0G7QawAWxQNqAbwAYwgbl3Z//jSpxI1kuoB0j1VU70bMNGlm3EgRtErZP/ryOllEczO6h1otUzuSOllALgA8DOzM5qoF5Iq/8FwIOZESax5kJa8XsAJzP7ytYshbB+doXdYZfSlgekFc/3hqD3DI0npNV/BHAYvd0iIATxnbk3s+dR3YmCtPq5zbjdwj/X0ZAGeqqgsK/bKEjbbseodDAS0roTkg4yICHpIBPimg4UIC7pQAWyOB2oQWanA1VIdzpQhnSlgzVAJqWDNUEYQBlEf405a4BcKuBq8FSGfFcAA+efSxVyArDvOZypQd5qF7qPyyqQzwqYfYGhAOHtJc8piw5dmZDX2gWXS74MCLfRnfc5fiSEn1NuId5Ouq9RkKtT2UMVDZk0lZUhXVNZFdI9ldUgs6eyCmTxVFaAuEzlTIjrVM6AhEzl0RCeD0Km8lCIx49FPmPyZI8swuPZN4jHv+j5jM105AedROwzTvmFegAAAABJRU5ErkJggg=="
                 width="30" height="30" />
@@ -13,7 +13,7 @@
         <div class="mask"></div>
     </div>
     <div class="title pull-left">
-        <a href={"/mp/player/" + (iter \ "path").asOpt[String].get}>{(iter \ "title").asOpt[String].get}</a>
+        <a href={"/mp/player/" + (iter \ "path").asOpt[String].get}>{(iter \ "title").asOpt[String].get + "/" + uid}</a>
         <div class="detail-info">
             <div class="with-icon">
                 <img class="icon icons8-Play"
