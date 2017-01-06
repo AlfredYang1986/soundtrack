@@ -13,7 +13,7 @@
         <div class="mask"></div>
     </div>
     <div class="title pull-left">
-        <a href={"/mp/player/" + (iter \ "path").asOpt[String].get}>{(iter \ "title").asOpt[String].get + "/" + uid}</a>
+        <a href={"/mp/player/" + (iter \ "path").asOpt[String].get + "/" + uid}>{(iter \ "title").asOpt[String].get}</a>
         <div class="detail-info">
             <div class="with-icon">
                 <img class="icon icons8-Play"
