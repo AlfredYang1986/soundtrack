@@ -35,10 +35,17 @@ GET		/test						controllers.pages.HomeController.uploadTest
 GET		/test/audioplay				controllers.pages.HomeController.audioplayTest
 
 # pages
-GET		/index/:wechatid			controllers.pages.HomeController.index(wechatid)
+GET		/mp/index                   controllers.pages.HomeController.index(t="")
+GET		/mp/index/:t                controllers.pages.HomeController.index(t)
+GET     /mp/profile                 controllers.pages.HomeController.userprofile(t="")
+GET     /mp/profile/:t              controllers.pages.HomeController.userprofile(t)
+GET     /mp/player/:a               controllers.pages.HomeController.payloadPlayer(a, t="")
+GET     /mp/player/:a/:t            controllers.pages.HomeController.payloadPlayer(a, t)
+GET     /mp/sysnot                  controllers.pages.HomeController.sysnotlst(t="")
+GET     /mp/sysnot/:t               controllers.pages.HomeController.sysnotlst(t)
 
-GET		/queryWechatAuthCode		controllers.pages.HomeController.queryWechatAuthCode
-GET		/queryWechatOpenID			controllers.pages.HomeController.queryWechatOpenID(code, status="")
+GET		/mp/queryWechatAuthCode		controllers.pages.HomeController.queryWechatAuthCode
+GET		/mp/queryWechatOpenID		controllers.pages.HomeController.queryWechatOpenID(code, status="")
 
 GET     /admin/login                controllers.pages.AdminController.AdminLoginPage
 GET     /admin/index                controllers.pages.AdminController.AdminIndex(t="")
@@ -54,3 +61,4 @@ GET     /admin/playload/play/:a/:t  controllers.pages.AdminController.AdminPaylo
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /mp/*file                   controllers.Assets.at(path="/public", file)

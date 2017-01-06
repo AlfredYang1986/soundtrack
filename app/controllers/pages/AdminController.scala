@@ -39,7 +39,6 @@ object AdminController extends Controller {
 		} catch {
 			case ex : Exception => InternalServerError("error 404")
 		}
-
 	})
 	def AdminUserLst(t : String) = Action (request => checkAdmin(t, request){
 		import pattern.ResultMessage.lst_result
