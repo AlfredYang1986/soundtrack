@@ -150,8 +150,7 @@ object AuthModule extends ModuleTrait {
 
 			(from db() in "users" where ("wechat_id" -> user_id) select (x => x)).toList match {
 				case head :: Nil => {
-					println(head)
-					(data \ "screen_name").asOpt[String].map (x => head += "screen_name" -> x).getOrElse(Unit)	
+					(data \ "screen_name").asOpt[String].map (x => head += "screen_name" -> x).getOrElse(Unit)
 					(data \ "screen_photo").asOpt[String].map (x => head += "screen_photo" -> x).getOrElse(Unit)	
 					(data \ "gender").asOpt[Int].map (x => head += "gender" -> x.asInstanceOf[Number]).getOrElse(Unit)	
 					(data \ "start_in").asOpt[Long].map (x => head += "start_in" -> x.asInstanceOf[Number]).getOrElse(Unit)	

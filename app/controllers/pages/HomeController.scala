@@ -44,7 +44,7 @@ object HomeController extends Controller {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw  new Exception)
 			if (status == "ok") {
 				val contents = (result \ "result").asOpt[JsArray].get.value.toList
-				Ok(views.html.homepage("每天5分钟听财经资讯")(user)(contents))
+				Ok(views.html.homepage("每天5分钟听财经资讯")(t)(user)(contents))
 
 			} else throw new Exception
 
@@ -52,7 +52,7 @@ object HomeController extends Controller {
 			case ex : Exception => InternalServerError("error 404")
 		}
 	})
-	def payloadPlayer(a : String, t : String) = Action (request => checkAuth(t, request) { user => (Ok(views.html.admin_playload_player("播放试听")(a)))})
+	def payloadPlayer(a : String, t : String) = Action (request => checkAuth(t, request) { user => (Ok(views.html.audioplay("播放试听")(a)))})
 	def sysnotlst(t : String) = Action (request => checkAuth(t, request) { user =>
 		(Ok(views.html.admin_playload_player("播放试听")("")))
 	})
