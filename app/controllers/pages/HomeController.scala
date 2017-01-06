@@ -75,7 +75,7 @@ object HomeController extends Controller {
 		if (token == "") Ok("请先登陆在进行有效操作")
 		else {
 			import pattern.ResultMessage.common_result
-			val routes = MessageRoutes(msg_queryUserByToken(toJson(Map("token" -> token))) :: msg_CommonResultMessage() :: Nil, None)
+			val routes = MessageRoutes(msg_queryUser(toJson(Map("wechat_id" -> token))) :: msg_CommonResultMessage() :: Nil, None)
 			val result = commonExcution(routes)
 
 			try {
@@ -91,7 +91,7 @@ object HomeController extends Controller {
 				/**
 				  * 需要一个404或者500的错误界面
 				  */
-				case _ => Redirect("/queryWechatAuthCode")
+				case _ => Redirect("/mp/queryWechatAuthCode")
 			}
 		}
 	}
@@ -102,8 +102,6 @@ object HomeController extends Controller {
 	def queryWechatAuthCode = Action {
 		val redirect_uri = "http://whq628318.cn/mp/queryWechatOpenID"
 		val authCodeUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + URLEncoder.encode(app_id) + "&redirect_uri=" + URLEncoder.encode(redirect_uri) + "&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-		println(authCodeUrl)
-
 		Redirect(authCodeUrl)
 	}
 	
