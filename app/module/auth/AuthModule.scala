@@ -53,6 +53,7 @@ object AuthModule extends ModuleTrait {
 		builder += "start_in" -> -1
 		builder += "expired_in" -> -1
 		builder += "register" -> d
+		builder += "last_date" -> d
 		builder += "auth" -> AuthStatus.admin.t
 		
 		_data_connection.getCollection("users") += builder.result
@@ -185,6 +186,7 @@ object AuthModule extends ModuleTrait {
 		builder += "start_in" -> -1
 		builder += "expired_in" -> -1
 		builder += "register" -> d
+		builder += "last_date" -> d
 		builder += "auth" -> AuthStatus.normal.t
 		
 		builder.result
@@ -200,6 +202,6 @@ object AuthModule extends ModuleTrait {
 			"expired_in" -> toJson(x.getAs[Number]("expired_in").get.longValue),
 			"register" -> toJson(x.getAs[Number]("register").get.longValue),
 			"auth" -> toJson(x.getAs[Number]("auth").get.intValue),
-			"last_date" -> toJson(x.getAs[Number]("last_date").get.longValue))
+			"last_date" -> toJson(x.getAs[Number]("last_date").map (x => x.longValue).getOrElse(0)))
 	}
 }
