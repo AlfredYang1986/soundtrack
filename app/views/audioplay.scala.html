@@ -8,12 +8,77 @@
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("jquery-ui/jquery-ui.structure.css")">
 
 } {
-	<p>should be thumbs here</p>
-
-	<div>
-		<p>should be play in seconds</p>
+	<div class="hero">
+		<button class="button-with-icon">
+			<!-- Paper Plane icon by Icons8 -->
+			<img class="icon icons8-Paper-Plane"
+				src="data:image/png;base64,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"
+				width="45" height="45">
+			小纸条
+		</button>
 	</div>
 
+	<div class="player">
+		<div class="progress-player">
+			<label class="pull-left">00:04</label>
+			<div class="progress-bar-player">
+				<span></span>
+				<label>
+					<span></span>
+				</label>
+			</div>
+			<label class="pull-right">03:34</label>
+		</div>
+		<div class="player-buttons">
+			<button class="pre">
+					<!-- Skip to Start Filled icon by Icons8 -->
+				<img class="icon icons8-Skip-to-Start-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABtElEQVRoQ+2YQW6CQBSG/xfZ1xvUDeuSyr7eoN6i7UpvIJ5Ad2g3cCBOIE08hwl1mkFprLE4wEx4kGENb+Z733tk3hB68lBPOGBBuJm0RqwRQxmwpWUosb9h/W26SN7cpeo6ykb8TSrKgibvrnKssjh+mE4EiYhAoyoxlRc3DeJF+6FzyBYA5gVo50AuLVza6gzILQudAxlvv6YQshcw/K9nWBuRFgaHTAJM7/2R2IKoWGBdWl64Hw0oW6lYYAsy3uxmAAVlvcC6R6QFh7IIwOReL7AFaWKBRWl5nzvPOdKqiYXWQUAIIBDULaNb37Xy+9UJ0OpZy4KUZMCWVunAc2ewsqXFrrQEliDICU/b00qPyEXzYwmyGIQXHTStgRSbf96mcxKQB8WHJkCtg8jN67DDAkSHHVYguZ3TeBsT8Fql1NiBFJs/j7oSSKl32IJUtcMa5I+do1gT4ZHthKjaB6fe+Q4IYsZmHqlSBtebzq9MgfjaTpWYrC6xr+10EqSwdL7QXhPoyQiIat3res8P0yD5cJXvAJRLS9cGTcWxIKYyWzeuNVI3c6a+s0ZMZbZu3N4Y+QGv+RJCAJboBAAAAABJRU5ErkJggg==" width="50" height="50">
+					<!-- Skip to Start Filled icon by Icons8 -->
+				<img class="icon icons8-Skip-to-Start-Filled active" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABtElEQVRoQ+2ZUU6DQBCG/7F9tzewN9BXHohNOIC9SXsD8AT1BnAPS0iKFuOLx+GlgFkQQyrCUiA7NEvSN5idb74Zwm4JV3LRlXBAg3AzqY1oIyNVQLfWSIX9DeuHkW2ZxrPsOtJG/DDKmoJapiEdqynOaxitbjK4ICy7xJRefGyQIPhapLPYBtG2BJ0cSNVC1dZkQOosTA5kfziuCWIWaPHfzLA2Iiwk89gl0LrtjcQWRMYC69YKomiZnLKdjAW2IPvwY0NZ6jTNAusZKSzAJWDVNgtsQfpYYNFawfvnQ5Imuz4WlIMAcH5+l3bSn+eUvH4Hy74SSIM0VbXt61cbaaiAbi3dWkUFxP7aHnJWlLSWWFR8lqQneAAehwBSBlIm778dt1lKDhFu+wApBxHJD2GHBcgQdliB5HbE9nYWe0T01KXV2IGUyYutLkCe7OywBelqhzVI1Q4RXgC6Y7tDlJ2D/IBuHjsAbeqemYSRauL5kSky79zO5EDK2Tm3M0mQ0lBhR8wO7kcBke37oe7zw8ixTEOcA0hd0v+PSEVTeJMGUVj82qW1EW1kpAro1hqpsBeH/QZeCQ9CaCI79gAAAABJRU5ErkJggg==" width="50" height="50">
+			</button>
+			<button>
+					<!-- Circled Play Filled icon by Icons8 -->
+				<img class="icon icons8-Circled-Play-Filled"
+				src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD2klEQVRoQ92aTVYaQRDH/wUYljEnCL7nsA1x2IsniDmBunJYiSeQnEBcMWSDOUHICcQ9GLJlfA9zgmQZZKDyenBwGGaYb+DRW6ar+tdVXVVdDWFLBm0JB2IDKTQHu5mhfghCAYwSg3MEylk3isFPBHoCoQ1GT89m7ntne3/j2MzIIHLj8QTMxwQch1kQAy0Qtbrn+9/CzDfnhAaR1f4FgIp918MuRlgLQK2r5G/CyAgMUqxrJSZuxgVgX7ThfkxnnbLUDgIUCKSoatfCCkEURPi21lGkS7/zfYFMD/LoDqCCX8HxfMc9Pbtz5CcgeIIUvvYLmQmaq4cwt8IfzFKQ9Vli4eR4WmYpSFHt/1yfJRZhOkr+o5vLuoLI6mONwCLEbsxg0E1X2XcMNo4gIsSCcLcxBPPlwZFTaHYEkdX+IKk8EXVzRJ7pKvk9u5wFkGJdq4JwFVVhkvMnhMuHc6lm1bEAEskajCMGbonwPkkQJ6vMgRzU+6cpombYRXQUyZAnrMok6jC8DSvLa96E+eyhnL91LBplVWsR8MlLiNvvJoj4vVAf5NIYVYnoJKy8ZfMY+NFVpFnFPbPIy33iTxSlVhBTzkuRWSPQhyiynebq2cw7s3yZgciNx2Ni/h5FmROIKe+goVWIUY3T3Zjoc/d8vyV0zEDiiFbLQAx3aw5208NxNbZEy/jSKUtVO0gbhMOkLGKVaxSiY6pF1QfGfacsleZAIoXdl1V6WcS+SSJKEqgaPlxzz6y/Xl1L1TiKNcTcoCCmu2X+6ZWwSdjUuXYQc/NEuM5Avw3qbpsJQrpIxobP+x0bA2Lkr2f9Agwj+gQdCyByXXsKf+im6oOekWlPbFINW2kz+FdXyRt9BGseWW34nZDoyARyowVrOYXfVSXEzFAXV4R4WkpOCTHpEmXamSRRouwGPQdu3zuWKEkWjSC+TqKJ4Vg0CurYy3gaXRHoNC4LWOW4lvHio9guVg3titm4WMXmRvbNWHqxMqwSJQyLq26CDW4Thhm/u2Vp7u1l4c4u7g0phgiNGzvs1pjLI9ZVR7JKwvhO1nAF2ZoG3TSCbUHL1PQOWe33kmgahPE+a13lNN/zWSE9HLXXDSMgxtmd0rIHH++HHtGfolFrXTB+IFwPu9100+7H6i3jF8I3yOuZWV0AWPYWEviMOE0wOocJNqpFniDgNNHnaSuY0TmcoBL1VmktOziFmv25wG+E8zzsXoKM3hSR+AtHqOa3qGKZuWXtrHvpjMW13JQYAeF5XKIJizu0cL+c3Vri8BKT+BNNm1PUG79Jt/28ofsBi2wRP0pW8c3WgPwHdJHSQv9NZCcAAAAASUVORK5CYII="
+				width="50" height="50">
+					<!-- Stop icon by Icons8 -->
+				<img class="icon icons8-Stop active" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADj0lEQVRoQ+2avVYaQRTH/5ddglbx2CVNpFjaoNIHnkDyBNEiBjrzBOIb2GFMgXmC4BO49pCQFgpIk3QerdSwy82Z4SPL1+4sHwt4sgWHg/Nxf3P/c/feGQkr/tA87I+fV+Nh0HPn2E3wXeUwVpn1fFMDxAv1De2PvQduJQEkCbTlZiSDGwBMUMi0n2mXlYPo7TRQEwPE8/UtjZrHAKUJ2JjECAZuAS7aHD6pZKMCzPfjG0AYrpNVEKvtezaXDgwUbdY/+gXxBZD4VDsGIzdLw4fGIuRKH4wT1TmUAITO9Ufr66xX3cVI04rob1X2hyeAiCh6CwWA4qqrMpt2XLFCOPCKXK4AwnitRVeTbtJpQcQmt0OccoMYC9CWTfMq+JUfxOaKFQmnxslpLEDirHYVoOa9nGWWMkZqVKORAIl8LQfCsdeogf6dcVLKGkMRcAigE+frgRqnMJncD6xvD74nhgCWTDp9aAxcljNG2vljH8Cyrr7TYIv1qNMLfQC7+eoFEb1T8KhssvtyHTsv1lWbj2z37fc9yr/ulcdg5i/lbGy/26EHILPKR6vuJ+YfJjbxfndTefJRDT+Xb3BeulEeQ+6FiB7thtUewE6+uh8iEkma8rMIAGFci/ngWzZ2Ib73APzKR3ReFIBTRv8Azqp1r2Jk0DULAwA3yplYtM8DibMaK2un03BRAGL6UsaQiy8/2hknfV8lACvE2yLJkwCJfC0Jgsh9fD2L9AAYqVLWMP8DBP0e6EnkSXlg5Tex3MirHEZlYpavNYjwyk8YWlQUYsbPctaQJ4BPJ5VY+WSuk043COg7VXaT1CIkxMCdHdG3htLp9j7wX9CIomaaRxQzMyloZE7UPrhduoLeuUCuJWUnLzJBeDPNqs6rr2dRv8xekNpnPe55rNLxwuoebHXdn8jXlkdKjOtS1hh5oeJ6uKs9Nk0CvZ6XplXGZfAPOxJO+j7c7VZqWotE0aD8blAxSrXNON07+ytdcGgtXATtCbnyHE573Zl5AkhPiLuCB6sYWHhlXFtrenomV0xOd4ljdyYczUtSQjLEOB11jD5OdkoecHZu3w9bpwTsqWpZpZ14SdmsH3lJZnAs3wDdASQImjmQvOieaJOLFQdz0UY459fwrh0TA/RACvWN0ENTQCQBSnoVRaIYAdhkwGythYsqOnfz4NQAowaXNbZNff9+YGl863VlqiK1mUloksnm0ecvrKXtQN94o90AAAAASUVORK5CYII=" width="48" height="48">
+			</button>
+			<button class="next">
+					<!-- End Filled icon by Icons8 -->
+				<img class="icon icons8-End-Filled active" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABqklEQVRoQ+2ZTXKCQBBGvzZUcQ6rQk7ggWCF7PQEwg10leQW5gZmjymzdmNuYPZSnSLGFGUUZwbRHjOs5+/1m4aegXAjD90IBxyINJPOiDPSUgT+59bqPS9HeRxkLQW10bBaRnpPSwZ4AaZhngSzRjP/dN6OefzJ+4HSGpUa7abZm3S88b1sEXXXTYAkgIDBK2KKmtgRAVIxYWxHGsi3HVBnOI/vpzpbTRzIbvEMTAvfi1RzRyxICcTAGkSRih3RIDp2rAD5tQNO5/2HyaHcsQaksvjZhr1okXRXVSAbQba5s2fHSpBDdmwH2TIRUjDSa9daOt8947aXKBqNF6fT0YHURetUYupEWrWtM+KMqO6VajtGBsLI3tcv43UDLyzLlVN5JzJHGPhkQvoWB+Mj9wB/5MgDqViwsmg8ZME6EAZeCt8L6469onOktACi0OqjrooF0VuLGR/o0EDFglgQBk0K/y5VvQISB1JaICC0+sq0iQURRhj8TkyDJhauD/K4TPMkqD1jm9SO5+ij9X/kHBO2NYYDaSuypuM6I6aRa6ufM9JWZE3HvRkjXz7+SkIIeo3pAAAAAElFTkSuQmCC" width="50" height="50">
+					<!-- End Filled icon by Icons8 -->
+				<img class="icon icons8-End-Filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABo0lEQVRoQ+2YQW6CQBSG34AbjtNdx5QmBHsPuIGeQLyB3sQewMTGhdv2BnoDu1f+hgaITREHJ+AbHBJ3w8x873sP542gnjyiJxxkQbiZtEaskZYi8Jiptdpsp6EvZy0FVWvaRkZWmy1A+ASJyZsv11or5y9nc9bNE/pSaY9Kg4qF/iwKzJ2TNwuCp4MO0P1Bst2DdqmgWMcOD5BChYYdXiC5HRAmo9fhskmq8QPJdw/C0j16sWrtsAX55QEOIIpV7PAGaWDHCJDSjnCSkf+8qKodc0BKO7R2BxQHUu7OgYwDuWTHTJAKO0aDnKVWQkTZ7+LT/lmryb+exlgLUhe8a/msEXibWkUEbu9H2gh/xZy2Rjqukaz/n5r8+f1wBhRlx5VrHxCWqQXQt3CQhC/DeeU9gCE1Ulow8tBYZcE4EADv7smL6tpe1jWSWSBCZHSrq2KBeWphD9BYxQJjECyco5eoXgExBME+JREZfmV6uwUuRr5SorGOBQ4gSejL2h67o9P9v2Ua9SP32qTKuhZEJUpdjrFGuoy2ylrWiEqUuhzTGyM/v3hUQiWmSOIAAAAASUVORK5CYII=" width="50" height="50">
+			</button>
+		</div>
+	</div>
+
+    <div class="title detail-page">
+        <h2 class="heading">新锐中产不信学历信情商</h2>
+        <p>新锐中产是怎样看待世界的？</p>
+        <div class="detail-info">
+            <div class="with-icon">
+                <img class="icon icons8-Play"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAE8klEQVRoQ91aXVIiVxT+zm2o6JNmBcEVqC+pahIMFuY5MysQVxBcgbKC0RUM7mDyHCmIJFA1L8IKZFYQ86Qp6T6pc7tv2zCN3L6IWukXiur7c75zvnv+bhOe4el0rjeD4v0vxCgxUJVfEEpTSzPGTBgT0JVf72Htt/393dtltyfXBbTQhX8PgbBOoB2XdRg8BFTLm3xz4QomN4DOYFAKH/hXAHUQbUaC8xdm6op2Q8L454rfnQUkgCeF+x1lrERcBei7aDqLJVqqSOf7vj/Oo4xcANq9wQmYG0ZwZlwwoZUlsI0Qv/cGQrc6EQ4TIERntYrftJkvY6wAdP76vBOEk4+GKiK4V8RpXm3NE0qsGjzg1AARankFem+z/kIA7atBHeAPsdZHSnn1/R++H9pqKM84UVQYBi0A2xGt6Li258v/uc+TALTwhI8xz89rlXIjj0CuY9u9/hlAcs4AxtFTIOYCmBJ+wSKugj41z3b/TAC2k1cheHrNtBzM/P5gr/xpds+vAGgeBpOO5vwraH5WwAQE860q0u7swf4KwGWvfx15G34xzi+ypDkT4p0OKuXd9PgpAO3e4BTACYBRreI7RddFwri+b/cG4vm2ATRrFV/k1E8CII6w10IdpbzdVblKVwCxi70W95qmUgIgMRPj4mDPr9tupK3GvKGC9aZrPmO71+XVoBUHu8QKGoDkKaF3d6O1X8CWTQQ0mya0Y75lRY2DH/0LW4HyjtMsmeBGWyFY3xKFaQDtP/sNMH2QFCGP9vXcx3MTxx0eMujYNT9aBCqxQuwhNQDjeUJgP+/GswASAViySzTzWHOR8PJeEkAFdIxHIk2fwv3fkhLXKuXpIsRixbkAdBrAt8iZXVpsiXavP5ZUXE3WviUTKFzok0WhTAGkGgMfZ0VSG4FnxxgaSXSmJHFyjLpPWmBmZwa6XgFHy9IqlWI0qd0bSPX0kwv/rS0wq0Lms2XcrjkHAP4QCt1IAV6r+Atrgyxz57HA1Pwl3G5ybhljsQDLwi8OIEYj3sTF7Rq5Xx2Aq9t9cwDy1tlvCcAoBBoOAVRTX9yoDgovfQaY8Q8BjUVFe5bjSAff13Gj4HM1WT91zV6n3ajpALxAIBO/rQqoP28gi1snK00ldOsRjZWkEumgUNvzt/LmJk8FMs1zgrQKkxIw7/qZwTMOvjqZi9MBXW+6pBPzAOR1i7bAUvzXdfuzFzTSEHBxi7YAMgsa3ev37sdE2HAtKZdxi7bCm5JS9vKCtVJSUkY0ivqReQ9zRCHeXMYt2gKYW9TLAnGLe6it8IbbKlr7RewYV5zZ2MrqgNlqaVXjHjuGcxpbZuPHDtjbay1mdQwzm7tBEHSFSm+puTtLHaPw/197PaFS+nbGMU9a5jzY3lHYXzExn9X2ysfLCGU7t33Vlzu56DrL9YrJbHZ51X8HkDRVN/TtoSocrapznb4NFc4DXF+UAFp1IuIIKNc70p8XrTxr2zBq7eMEBNMVH6kC3tmk3VYAUi72VNJi7aFiICHhIm85aNbTiRnj0Ajukr3mAmAidjjhBjPJDbsBIp8HdFmhq0IeU7A+mq22JN9i7247VFSiEFUAVfNBiBFcFdCy0Xr6LOUGYCbrOqJ4VweTmD2iVv5nBMaZCtY+uZaXzgDSskbZ7F2VSH+1UgW4lHzIkQzkLwBFlmIeesF611Xo9N7/AdDIXD8xivH7AAAAAElFTkSuQmCC"
+                    width="30" height="30">
+                <label> 1.4万</label>
+            </div>
+            <div class="with-icon">
+                <img class="icon icons8-Speech-Bubble"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEiElEQVRoQ+1ZW3IaVxA9fQdVyV+WVxC8AuGfVIYELAL+jrQC4xUgryDjFURegfAKRL7DFIhxmFR+DCsIWYGVL7lKMJ3qeWnEax4MMqEynzNz+/a53bcfpwl78tCe4MD/QHbNkrlZpGfbRb6jYyYuMXAiQIlRBKHogmZMmDBx3wN9YhrRAY9ruu6+2/TZCIgo79xxiwknBCplUYbBIwJ1VAEfNgGVCchvln1C4BaBTiPKjwHug2nkECavKnp/GTBZq1xLcQkgsdxx8B+DOwx6v2rtuoNKBUQsMJviknzXAfhvgNqqgHbW03StOkUT4CZA33heiL5WwJs0MhMD6Vp/tIgdA0RHLgAmo17V21ncadUac2A3QWy4gJhvmJTRqHz3PskesUB6vU9Hs8LtZcSN3tUrupFEeNZ/TMsW+T/7QaKtZodva7UXN5ldywfR8y/yWCmtWfv+21FWBdOs6/3+Z8lxph2xjgQEbfqktg7MSossgJgensSdShpFk/wrOjiFLxI0juPArATStYZXvjuN1VcAEQCdA9NpVMpnyw5hKZCIj35VEMvAAFh6RxeAeL45+8SMf7QDlNKEwCTukvUfN/TfYUSEp6qA5/N6LQDpWnbPzRPEb+s/lC+ybryNdebH4TmYfpE806jotegeD4C4WRfoSZ6oV8pejbRjj2kNJxLJHKAWrQAeAOkO7DYRXoPxJu9kl9d5eEkTl8z40KjqzUBuCMSPDp/lbjSq+lFeG29DTndg37h3ZXr4LEgJIZDuYHhKRFfzSLehyKYyA89h5rNGtdwReSEQ0xpeANSKftx0w22tDw49GoojQGzJoC+V0l48VhmSFWiQIgBc1yu618QFwkzLA1Kv6LGFZFYF8lxnWjavAiIf8B8DEuobtcjeANkb19qby+51ZTuc1YNgsTb87k1CdDtC7cuEwFyvlp/lGSrzlmUOhp+FBFlaoshme1E0CpCwjGdM6lX9ed4nmYc8c2D/JTTs2jJeNgoy/C43VtGMvlDGBy/ClhLMSivUdqXucuur2bTn3o0kra5rlbCljOeT8nCXOBlz1FQy8uE+VnvdYhyfFKfEpt+jIJj510a1HCXOQ/FrK13TsoVVjCXHNlV21fo0JOFaIF5uuW0T0U8yqFGadvZYd8a7E7Mrf1AUy68l6j2C7tE/OaNe0d9tywp+5BQC2yXKpfXWZofncXRtIiCucJ+92GbP0v1ovyYHhlhBSBBSbCTl1hIDCViWZTF8E+v4gx6hoITmCbi0a1VAMw3LmRjIKj4p0iobYH7KikbK4cmP1fL1PEA5DNZujx1FRXK4ND97lKjERBdbHb0to2BCEAP7EiTjs0zPGIAMQzOP72TXRBa5d6uHVGp0pig+LXNAIioxo0j3bvLSg+fOG4NRdJ+ZR9oBjdK4z7pjSgRkvir2gbXAfB7MFJUqnD5WaF4GKBZIyCH5w0nAkZl6mF3Fr7XZk2ZceMzkdCkWxQIJxwyLQq8dwMhyMVPol/jXuBLF7ePdmE4YMfMNKfSVRp28fDuxpjE/xlokr422LWdvgPwLIRKuUR2ENnYAAAAASUVORK5CYII="
+                    width="30" height="30">
+                <label>234</label>
+            </div>
+            <div class="date pull-right">
+                2016-12-25 07:00
+            </div>
+        </div>
+    </div>
+
+    <div class="comment">
+        <label>发评论</label>
+        <button class="pull-right">签</button>
+    </div>
 
 } {
 	<script type="text/javascript">
