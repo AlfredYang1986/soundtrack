@@ -18,8 +18,8 @@ object HomeController extends Controller {
 	/**
 	 * wechat app id
 	 */
-	val app_id = "wxcd44bfae640e4288"
-	val app_secret = "c5d1a447c27ced348a28a8a113ed22a7"
+	val app_id = "wx86135fc9a5e67ff3"
+	val app_secret = "74f13dbccc1b8323aadebda15d35144d"
 	
 	/**
 	 * wechat business id
@@ -52,7 +52,23 @@ object HomeController extends Controller {
 			case ex : Exception => InternalServerError("error 404")
 		}
 	})
-	def payloadPlayer(a : String, t : String) = Action (request => checkAuth(t, request) { user => (Ok(views.html.audioplay("播放试听")(a)))})
+	def payloadPlayer(a : String, t : String) = Action (request => checkAuth(t, request) { user =>
+		import pattern.ResultMessage.lst_result
+		val routes = MessageRoutes(msg_queryPayloadWithPath(toJson(Map("path" -> a))) :: msg_CommonResultMessage() :: Nil, None)
+		val result = commonExcution(routes)
+
+		try {
+			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
+			if (status == "ok") {
+				val payload = (result \ "result").asOpt[JsValue].get
+				(Ok(views.html.audioplay("播放试听")(user)(paload)(a)))
+
+			} else throw new Exception
+
+		} catch {
+			case _ => BadRequest("invalid input args")
+		}
+	})
 	def sysnotlst(t : String) = Action (request => checkAuth(t, request) { user =>
 		(Ok(views.html.admin_playload_player("播放试听")("")))
 	})

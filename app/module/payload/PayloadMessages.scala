@@ -11,4 +11,5 @@ object PayloadMessages {
 	case class msg_queryMutiplePayload(data : JsValue) extends msg_PayloadCommand
 	case class msg_updatePayload(data : JsValue) extends msg_PayloadCommand
 	case class msg_popPayload(data : JsValue) extends msg_PayloadCommand
+	case class msg_queryPayloadWithPath(data : JsValue) extends msg_PayloadCommand
 }

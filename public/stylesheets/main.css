@@ -192,7 +192,7 @@ label {
   vertical-align: -10px;
   margin-right: 5px;
 }
-.player, .title.detail-page, .comment {
+.player, .title.detail-page, .post-comment {
   padding: 50px 30px;
 }
 .player {
@@ -241,10 +241,26 @@ label {
   font-size: 45px;
   font-weight: 700;
 }
-.comment {
+.post-comment {
   font-size: 35px;
+  /*position: fixed;*/
+  bottom: 0;
+  background: white;
+  box-shadow: 0 2px 37px rgba(0,0,0,.25);
 }
-.comment button {
+.comments {
+  padding: 30px 30px;
+  background-color: rgba(238, 238, 238, .4);;
+  font-size: 35px;
+  color: #9d9d9d;
+}
+.comment {
+  padding: 30px 30px;
+}
+.comment img {
+  vertical-align: top;
+}
+.post-comment button {
   font-size: 40px;
   font-weight: 700;
   border: 1px solid #428bca;
@@ -274,6 +290,29 @@ label {
 }
 .player-buttons button:nth-child(2) img.active, .pre img.active, .next img.active {
   display: inline-block;
+}
+.comment-detail {
+  width: 80%;
+  display: inline-block;
+  margin-left: 30px;
+}
+.comment-detail label {
+  font-size: 35px;
+}
+.comment-detail p {
+  font-size: 27px;
+}
+.comment-detail span {
+  font-size: 27px;
+  color: #ccc;
+}
+.comment-detail span:last-child {
+  font-size: 25px;
+}
+.comment-detail img {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
 }
 
 
@@ -422,7 +461,7 @@ label {
     height: 20px;
     vertical-align: -5px;
   }
-  .player, .title.detail-page, .comment {
+  .player, .title.detail-page, .post-comment {
     padding: 15px 18px;
   }
   .progress-bar-player {
@@ -453,15 +492,15 @@ label {
   .title.detail-page h2 {
     font-size: 19px;
   }
-  .comment button {
+  .post-comment button {
     font-size: 20px;
     height: 32px;
     width: 32px;
   }
-  .comment {
+  .post-comment {
     font-size: 17px;
   }
-  .comment button {
+  .post-comment button {
     font-size: 20px;
     height: 32px;
     width: 32px;
@@ -485,5 +524,38 @@ label {
   }
   .player-buttons {
     margin-top: 30px;
+  }
+  .comments {
+    font-size: 14px;
+    padding: 15px;
+  }
+  .comment {
+    padding: 15px;
+  }
+  .comment img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .comment-detail {
+    margin-left: 15px;
+  }
+  .comment-detail label {
+    font-size: 16px;
+  }
+  .comment-detail p {
+    font-size: 13px;
+  }
+  .comment-detail span {
+    font-size: 15px;
+    color: #ccc;
+  }
+  .comment-detail span:last-child {
+    font-size: 14px;
+  }
+  .comment-detail img {
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
   }
 }

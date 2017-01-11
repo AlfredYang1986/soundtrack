@@ -1,4 +1,4 @@
-@(title : String)(audio : String)
+@(title : String)(user : play.api.libs.json.JsValue)(payload : play.api.libs.json.JsValue)(audio : String)
 
 @main(title) {
 	<script src="@routes.Assets.at("jquery-ui/jquery-ui.js")" type="text/javascript"></script>
@@ -8,9 +8,9 @@
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("jquery-ui/jquery-ui.structure.css")">
 
 } {
-	<div class="hero">
+	<div class="hero" style="background-image: @{(payload \ "cover_pic").asOpt[String].get} !important;">
 		<button class="button-with-icon">
-			<!-- Paper Plane icon by Icons8 -->
+				<!-- Paper Plane icon by Icons8 -->
 			<img class="icon icons8-Paper-Plane"
 				src="data:image/png;base64,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"
 				width="45" height="45">
@@ -39,8 +39,8 @@
 			<button>
 					<!-- Circled Play Filled icon by Icons8 -->
 				<img class="icon icons8-Circled-Play-Filled"
-				src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD2klEQVRoQ92aTVYaQRDH/wUYljEnCL7nsA1x2IsniDmBunJYiSeQnEBcMWSDOUHICcQ9GLJlfA9zgmQZZKDyenBwGGaYb+DRW6ar+tdVXVVdDWFLBm0JB2IDKTQHu5mhfghCAYwSg3MEylk3isFPBHoCoQ1GT89m7ntne3/j2MzIIHLj8QTMxwQch1kQAy0Qtbrn+9/CzDfnhAaR1f4FgIp918MuRlgLQK2r5G/CyAgMUqxrJSZuxgVgX7ThfkxnnbLUDgIUCKSoatfCCkEURPi21lGkS7/zfYFMD/LoDqCCX8HxfMc9Pbtz5CcgeIIUvvYLmQmaq4cwt8IfzFKQ9Vli4eR4WmYpSFHt/1yfJRZhOkr+o5vLuoLI6mONwCLEbsxg0E1X2XcMNo4gIsSCcLcxBPPlwZFTaHYEkdX+IKk8EXVzRJ7pKvk9u5wFkGJdq4JwFVVhkvMnhMuHc6lm1bEAEskajCMGbonwPkkQJ6vMgRzU+6cpombYRXQUyZAnrMok6jC8DSvLa96E+eyhnL91LBplVWsR8MlLiNvvJoj4vVAf5NIYVYnoJKy8ZfMY+NFVpFnFPbPIy33iTxSlVhBTzkuRWSPQhyiynebq2cw7s3yZgciNx2Ni/h5FmROIKe+goVWIUY3T3Zjoc/d8vyV0zEDiiFbLQAx3aw5208NxNbZEy/jSKUtVO0gbhMOkLGKVaxSiY6pF1QfGfacsleZAIoXdl1V6WcS+SSJKEqgaPlxzz6y/Xl1L1TiKNcTcoCCmu2X+6ZWwSdjUuXYQc/NEuM5Avw3qbpsJQrpIxobP+x0bA2Lkr2f9Agwj+gQdCyByXXsKf+im6oOekWlPbFINW2kz+FdXyRt9BGseWW34nZDoyARyowVrOYXfVSXEzFAXV4R4WkpOCTHpEmXamSRRouwGPQdu3zuWKEkWjSC+TqKJ4Vg0CurYy3gaXRHoNC4LWOW4lvHio9guVg3titm4WMXmRvbNWHqxMqwSJQyLq26CDW4Thhm/u2Vp7u1l4c4u7g0phgiNGzvs1pjLI9ZVR7JKwvhO1nAF2ZoG3TSCbUHL1PQOWe33kmgahPE+a13lNN/zWSE9HLXXDSMgxtmd0rIHH++HHtGfolFrXTB+IFwPu9100+7H6i3jF8I3yOuZWV0AWPYWEviMOE0wOocJNqpFniDgNNHnaSuY0TmcoBL1VmktOziFmv25wG+E8zzsXoKM3hSR+AtHqOa3qGKZuWXtrHvpjMW13JQYAeF5XKIJizu0cL+c3Vri8BKT+BNNm1PUG79Jt/28ofsBi2wRP0pW8c3WgPwHdJHSQv9NZCcAAAAASUVORK5CYII="
-				width="50" height="50">
+				    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD2klEQVRoQ92aTVYaQRDH/wUYljEnCL7nsA1x2IsniDmBunJYiSeQnEBcMWSDOUHICcQ9GLJlfA9zgmQZZKDyenBwGGaYb+DRW6ar+tdVXVVdDWFLBm0JB2IDKTQHu5mhfghCAYwSg3MEylk3isFPBHoCoQ1GT89m7ntne3/j2MzIIHLj8QTMxwQch1kQAy0Qtbrn+9/CzDfnhAaR1f4FgIp918MuRlgLQK2r5G/CyAgMUqxrJSZuxgVgX7ThfkxnnbLUDgIUCKSoatfCCkEURPi21lGkS7/zfYFMD/LoDqCCX8HxfMc9Pbtz5CcgeIIUvvYLmQmaq4cwt8IfzFKQ9Vli4eR4WmYpSFHt/1yfJRZhOkr+o5vLuoLI6mONwCLEbsxg0E1X2XcMNo4gIsSCcLcxBPPlwZFTaHYEkdX+IKk8EXVzRJ7pKvk9u5wFkGJdq4JwFVVhkvMnhMuHc6lm1bEAEskajCMGbonwPkkQJ6vMgRzU+6cpombYRXQUyZAnrMok6jC8DSvLa96E+eyhnL91LBplVWsR8MlLiNvvJoj4vVAf5NIYVYnoJKy8ZfMY+NFVpFnFPbPIy33iTxSlVhBTzkuRWSPQhyiynebq2cw7s3yZgciNx2Ni/h5FmROIKe+goVWIUY3T3Zjoc/d8vyV0zEDiiFbLQAx3aw5208NxNbZEy/jSKUtVO0gbhMOkLGKVaxSiY6pF1QfGfacsleZAIoXdl1V6WcS+SSJKEqgaPlxzz6y/Xl1L1TiKNcTcoCCmu2X+6ZWwSdjUuXYQc/NEuM5Avw3qbpsJQrpIxobP+x0bA2Lkr2f9Agwj+gQdCyByXXsKf+im6oOekWlPbFINW2kz+FdXyRt9BGseWW34nZDoyARyowVrOYXfVSXEzFAXV4R4WkpOCTHpEmXamSRRouwGPQdu3zuWKEkWjSC+TqKJ4Vg0CurYy3gaXRHoNC4LWOW4lvHio9guVg3titm4WMXmRvbNWHqxMqwSJQyLq26CDW4Thhm/u2Vp7u1l4c4u7g0phgiNGzvs1pjLI9ZVR7JKwvhO1nAF2ZoG3TSCbUHL1PQOWe33kmgahPE+a13lNN/zWSE9HLXXDSMgxtmd0rIHH++HHtGfolFrXTB+IFwPu9100+7H6i3jF8I3yOuZWV0AWPYWEviMOE0wOocJNqpFniDgNNHnaSuY0TmcoBL1VmktOziFmv25wG+E8zzsXoKM3hSR+AtHqOa3qGKZuWXtrHvpjMW13JQYAeF5XKIJizu0cL+c3Vri8BKT+BNNm1PUG79Jt/28ofsBi2wRP0pW8c3WgPwHdJHSQv9NZCcAAAAASUVORK5CYII="
+				    width="50" height="50">
 					<!-- Stop icon by Icons8 -->
 				<img class="icon icons8-Stop active" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADj0lEQVRoQ+2avVYaQRTH/5ddglbx2CVNpFjaoNIHnkDyBNEiBjrzBOIb2GFMgXmC4BO49pCQFgpIk3QerdSwy82Z4SPL1+4sHwt4sgWHg/Nxf3P/c/feGQkr/tA87I+fV+Nh0HPn2E3wXeUwVpn1fFMDxAv1De2PvQduJQEkCbTlZiSDGwBMUMi0n2mXlYPo7TRQEwPE8/UtjZrHAKUJ2JjECAZuAS7aHD6pZKMCzPfjG0AYrpNVEKvtezaXDgwUbdY/+gXxBZD4VDsGIzdLw4fGIuRKH4wT1TmUAITO9Ufr66xX3cVI04rob1X2hyeAiCh6CwWA4qqrMpt2XLFCOPCKXK4AwnitRVeTbtJpQcQmt0OccoMYC9CWTfMq+JUfxOaKFQmnxslpLEDirHYVoOa9nGWWMkZqVKORAIl8LQfCsdeogf6dcVLKGkMRcAigE+frgRqnMJncD6xvD74nhgCWTDp9aAxcljNG2vljH8Cyrr7TYIv1qNMLfQC7+eoFEb1T8KhssvtyHTsv1lWbj2z37fc9yr/ulcdg5i/lbGy/26EHILPKR6vuJ+YfJjbxfndTefJRDT+Xb3BeulEeQ+6FiB7thtUewE6+uh8iEkma8rMIAGFci/ngWzZ2Ib73APzKR3ReFIBTRv8Azqp1r2Jk0DULAwA3yplYtM8DibMaK2un03BRAGL6UsaQiy8/2hknfV8lACvE2yLJkwCJfC0Jgsh9fD2L9AAYqVLWMP8DBP0e6EnkSXlg5Tex3MirHEZlYpavNYjwyk8YWlQUYsbPctaQJ4BPJ5VY+WSuk043COg7VXaT1CIkxMCdHdG3htLp9j7wX9CIomaaRxQzMyloZE7UPrhduoLeuUCuJWUnLzJBeDPNqs6rr2dRv8xekNpnPe55rNLxwuoebHXdn8jXlkdKjOtS1hh5oeJ6uKs9Nk0CvZ6XplXGZfAPOxJO+j7c7VZqWotE0aD8blAxSrXNON07+ytdcGgtXATtCbnyHE573Zl5AkhPiLuCB6sYWHhlXFtrenomV0xOd4ljdyYczUtSQjLEOB11jD5OdkoecHZu3w9bpwTsqWpZpZ14SdmsH3lJZnAs3wDdASQImjmQvOieaJOLFQdz0UY459fwrh0TA/RACvWN0ENTQCQBSnoVRaIYAdhkwGythYsqOnfz4NQAowaXNbZNff9+YGl863VlqiK1mUloksnm0ecvrKXtQN94o90AAAAASUVORK5CYII=" width="48" height="48">
 			</button>
@@ -72,6 +72,41 @@
             <div class="date pull-right">
                 2016-12-25 07:00
             </div>
+        </div>
+    </div>
+
+    <div class="comments">
+        精选评论（7）
+    </div>
+
+    <div class="comment">
+        <img src="images/user-image.png" alt="user" width=120 />
+        <div class="comment-detail">
+            <label>巴九灵</label>
+            <span class="pull-right">
+                    <!-- Like It icon by Icons8 -->
+                <img class="icon icons8-Like-It" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADT0lEQVR4Xu2aTXLTMBTH/wpMZlhRbhAWMPGK9gQ0m9qsKCcgPQHlBHk5Ae0JSE9AWDXupuEEhJUNLJqeoGVVhikVo+bLdZNIcmIpKPa2bqT3e/+n9yEzrPnD1tx+FAAKBaw5gSIE1lwAxSFoPASqFBIDGkJ5HLwLxlpxwz+ypUSjACp0uvEIf84AbKQM7l2hXOtT7dI0CKMAkt5PGyrUEFNQcxbAHO+PbeZgezHttExCMKaAtPc58AtAnwEvRgZz4EtM/rZzAKZ5nwNN4KbFUBJnwviJyDfmFLGokcWmef83yhVx6HkUcqcBzPJ+TD4Jw50HMM/7VTquOB0CMu8/p3D3AfApcQh+i8nfdOYQnOd9YWSVwhYD3k7yID+MmsG+EwBk3h8A6JwxsMrI4L/Amx/kt50AIPe+/fjPLQ2qeH9K/BsvgnIDIPP+MP7HXeGgM8RRTH7dpPxzAaDi/SGALgNeJjJAc1QbmIQgrQTThYru5kTNP6r6kv/rUfgVwFJTnugoOUP7eyM4VN2nCQBTPbsoWImByvOF3AFcofxk2qAjZwCCTy8if0umhNwBzOruDACAynxBG4CsXbXV3Nz2FZwdgLHXOvMFZwAMMot+ceUUgGEKvtCZLzgFoErH2wylU53u0jEAkzsH1erSNQCp6lI+ZXYKgEehiP/xpcs12NZP2unNqwWcAZAlAyg1Q7p5Xfd9WaWm+vcqndQZ+EedGsApAF6jI4qgd7rdpUMhEN45AFXHa84ASIferCYsHVJOAHhGJ5sPwcV8Yfjw84iC8bDV+SzgUWcfYB8m9vPPUTPYVTlAnVDAvfsF8PcRBQdrAyA9XuO4qcX0qrsWALJ0gEkw/30IZOkAlwJALAywYeXF90aSM10J3vvuiOvdL2ZWQPJej4P3YwqeCrKmAXiNTvvuGEzeAS5JAeElAx4PfmySd40DyNABLgmAmL6w2y+6OHjdRgikO0BxCROTn/4GcW4yyBwCs37VpAKydoBLUYBtAMPyVxzCies19QJotH9tBagUF7beUW2AFlKALePk6+p7P9NARL4RC29o5n5HFMDPwdG7ZiWSDT4Xaoct+NPoktJD0OhuLCxWALAAfaWWLBSwUu6wsJlCARagr9SS/wCC/WxfWXvtigAAAABJRU5ErkJggg==" width="64" height="64">
+                13
+            </span>
+            <div class="clearfix">
+            </div>
+            <p>【环球时报驻俄罗斯特约记者 汪嘉波 柳玉鹏 候涛】“凛冬将至”，这是热播美剧《权力的游戏》中一句经典台词。在中国人常说的“三九天”到来之前，欧洲大陆的居民提前感受到了严寒的厉害。</p>
+            <span> 4 小时前 </span>
+        </div>
+    </div>
+    <div class="comment">
+        <img src="images/user-image.png" alt="user" width=120 />
+        <div class="comment-detail">
+            <label>巴九灵</label>
+            <span class="like pull-right">
+                    <!-- Like It icon by Icons8 -->
+                <img class="icon icons8-Like-It" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADT0lEQVR4Xu2aTXLTMBTH/wpMZlhRbhAWMPGK9gQ0m9qsKCcgPQHlBHk5Ae0JSE9AWDXupuEEhJUNLJqeoGVVhikVo+bLdZNIcmIpKPa2bqT3e/+n9yEzrPnD1tx+FAAKBaw5gSIE1lwAxSFoPASqFBIDGkJ5HLwLxlpxwz+ypUSjACp0uvEIf84AbKQM7l2hXOtT7dI0CKMAkt5PGyrUEFNQcxbAHO+PbeZgezHttExCMKaAtPc58AtAnwEvRgZz4EtM/rZzAKZ5nwNN4KbFUBJnwviJyDfmFLGokcWmef83yhVx6HkUcqcBzPJ+TD4Jw50HMM/7VTquOB0CMu8/p3D3AfApcQh+i8nfdOYQnOd9YWSVwhYD3k7yID+MmsG+EwBk3h8A6JwxsMrI4L/Amx/kt50AIPe+/fjPLQ2qeH9K/BsvgnIDIPP+MP7HXeGgM8RRTH7dpPxzAaDi/SGALgNeJjJAc1QbmIQgrQTThYru5kTNP6r6kv/rUfgVwFJTnugoOUP7eyM4VN2nCQBTPbsoWImByvOF3AFcofxk2qAjZwCCTy8if0umhNwBzOruDACAynxBG4CsXbXV3Nz2FZwdgLHXOvMFZwAMMot+ceUUgGEKvtCZLzgFoErH2wylU53u0jEAkzsH1erSNQCp6lI+ZXYKgEehiP/xpcs12NZP2unNqwWcAZAlAyg1Q7p5Xfd9WaWm+vcqndQZ+EedGsApAF6jI4qgd7rdpUMhEN45AFXHa84ASIferCYsHVJOAHhGJ5sPwcV8Yfjw84iC8bDV+SzgUWcfYB8m9vPPUTPYVTlAnVDAvfsF8PcRBQdrAyA9XuO4qcX0qrsWALJ0gEkw/30IZOkAlwJALAywYeXF90aSM10J3vvuiOvdL2ZWQPJej4P3YwqeCrKmAXiNTvvuGEzeAS5JAeElAx4PfmySd40DyNABLgmAmL6w2y+6OHjdRgikO0BxCROTn/4GcW4yyBwCs37VpAKydoBLUYBtAMPyVxzCies19QJotH9tBagUF7beUW2AFlKALePk6+p7P9NARL4RC29o5n5HFMDPwdG7ZiWSDT4Xaoct+NPoktJD0OhuLCxWALAAfaWWLBSwUu6wsJlCARagr9SS/wCC/WxfWXvtigAAAABJRU5ErkJggg==" width="64" height="64">
+                13
+            </span>
+            <div class="clearfix">
+            </div>
+            <p>【环球时报驻俄罗斯特约记者 汪嘉波 柳玉鹏 候涛】“凛冬将至”，这是热播美剧《权力的游戏》中一句经典台词。在中国人常说的“三九天”到来之前，欧洲大陆的居民提前感受到了严寒的厉害。</p>
+            <span> 4 小时前 </span>
         </div>
     </div>
 

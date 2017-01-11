@@ -22,7 +22,8 @@ object PayloadModule extends ModuleTrait {
 		case msg_queryMutiplePayload(data) => queryMultiPayload(data)
 		case msg_updatePayload(data) => updatePayload(data)
 		case msg_popPayload(data) => popPayload(data)
-		
+		case msg_queryPayloadWithPath(data) => queryPayladWithPath(data)
+
 		case _ => ???
 	}
 	
@@ -52,7 +53,23 @@ object PayloadModule extends ModuleTrait {
 			case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
 		}
 	}
-	
+
+	def queryPayladWithPath(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
+		try {
+			val path = (data \ "path").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
+
+			(from db() in "payload" where ("pah" -> path) select (x => x)).toList match {
+				case head :: Nil => {
+					(Some(DB2JsValue(head)), None)
+				}
+				case _ => throw new Exception("service not existing")
+			}
+
+		} catch {
+			case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
+		}
+	}
+
 	def queryMultiPayload(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
 		try {
 			val take = (data \ "take").asOpt[Int].map (x => x).getOrElse(20)
