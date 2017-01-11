@@ -61,7 +61,7 @@ object HomeController extends Controller {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
 			if (status == "ok") {
 				val payload = (result \ "result").asOpt[JsValue].get
-				(Ok(views.html.audioplay("播放试听")(user)(paload)(a)))
+				(Ok(views.html.audioplay("播放试听")(user)(payload)(a)))
 
 			} else throw new Exception
 
@@ -76,14 +76,6 @@ object HomeController extends Controller {
 		(Ok(views.html.admin_playload_player("播放试听")("")))
 	})
 	
-	def uploadTest = Action {
-		Ok(views.html.fileuploadtest("file upload test"))
-	}
-
-	def audioplayTest = Action {
-		Ok(views.html.audioplay("audio play test")("test"))
-	}
-
 	def checkAuth(t : String, request : Request[AnyContent])(fr : JsValue => Result) : Result = {
 		var token = t
 		if(token == "") token = request.cookies.get("token").map (x => x.value).getOrElse("")

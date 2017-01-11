@@ -30,10 +30,6 @@ POST	/comment/like				controllers.ajax.CommentsController.likeComment
 POST	/file/upload				controllers.ajax.FileUploadController.upload
 GET		/file/download/:name		controllers.ajax.FileUploadController.downloadFile(name)
 
-# test
-GET		/test						controllers.pages.HomeController.uploadTest
-GET		/test/audioplay				controllers.pages.HomeController.audioplayTest
-
 # pages
 GET		/mp/index                   controllers.pages.HomeController.index(t="")
 GET		/mp/index/:t                controllers.pages.HomeController.index(t)
