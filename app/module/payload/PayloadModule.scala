@@ -58,7 +58,7 @@ object PayloadModule extends ModuleTrait {
 		try {
 			val path = (data \ "path").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
 
-			(from db() in "payload" where ("pah" -> path) select (x => x)).toList match {
+			(from db() in "payload" where ("path" -> path) select (x => x)).toList match {
 				case head :: Nil => {
 					(Some(DB2JsValue(head)), None)
 				}

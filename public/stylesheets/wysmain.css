@@ -169,6 +169,153 @@ label {
   width: 50px;
   height: 50px;
 }
+/*detial page*/
+.hero {
+  background-image: url("../images/wxb.jpg");
+  height: 900px;
+  background-size: cover;
+  position: relative;
+}
+.button-with-icon {
+  padding: 15px 25px;
+  position: absolute;
+  bottom: 68px;
+  right: 61px;
+  border: 1px solid;
+  font-size: 37px;
+  border-radius: 47px;
+  color: #3498db;
+  background: white;
+  border: 0;
+}
+.button-with-icon img {
+  vertical-align: -10px;
+  margin-right: 5px;
+}
+.player, .title.detail-page, .post-comment {
+  padding: 50px 30px;
+}
+.player {
+  box-shadow: 0 15px 35px rgba(0,0,0,.075);
+}
+.player label {
+  font-size: 34px;
+  color: #9d9d9d;
+}
+.progress-bar-player {
+  display: inline-block;
+  margin-left: 24px;
+  margin-top: 17px;
+  position: relative;
+  width: 700px;
+  height: 11px;
+  background-color: #9d9d9d;
+}
+.progress-bar-player span {
+  background-color: #3498db;
+  position: absolute;
+  width: 0;
+  height: 11px;
+}
+.progress-bar-player label {
+  position: absolute;
+  left: -7px;
+  top: -16px;
+  width: 45px;
+  height: 45px;
+  z-index: 1;
+  border-radius: 45px;
+  box-shadow: 0 0 6px rgba(173, 171, 171, 1);
+}
+.progress-bar-player label span {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 33px;
+  height: 33px;
+  border-radius: 45px;
+}
+.progress-player {
+}
+.title.detail-page h2 {
+  font-size: 45px;
+  font-weight: 700;
+}
+.post-comment {
+  font-size: 35px;
+  /*position: fixed;*/
+  bottom: 0;
+  background: white;
+  box-shadow: 0 2px 37px rgba(0,0,0,.25);
+}
+.comments {
+  padding: 30px 30px;
+  background-color: rgba(238, 238, 238, .4);;
+  font-size: 35px;
+  color: #9d9d9d;
+}
+.comment {
+  padding: 30px 30px;
+}
+.comment img {
+  vertical-align: top;
+}
+.post-comment button {
+  font-size: 40px;
+  font-weight: 700;
+  border: 1px solid #428bca;
+  height: 64px;
+  width: 64px;
+  border-radius: 45px;
+  margin-top: -9px;
+  color: white;
+  background: #428bca;
+}
+.player-buttons {
+  text-align: center;
+  margin-top: 57px;
+}
+.player-buttons button:nth-child(2) {
+  margin: 0 39px;
+}
+.player-buttons button:nth-child(2) img {
+  width: 150px;
+  height: 150px;
+  display: none;
+}
+.pre img, .next img {
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+.player-buttons button:nth-child(2) img.active, .pre img.active, .next img.active {
+  display: inline-block;
+}
+.comment-detail {
+  width: 80%;
+  display: inline-block;
+  margin-left: 30px;
+}
+.comment-detail label {
+  font-size: 35px;
+}
+.comment-detail p {
+  font-size: 27px;
+}
+.comment-detail span {
+  font-size: 27px;
+  color: #ccc;
+}
+.comment-detail span:last-child {
+  font-size: 25px;
+}
+.comment-detail img {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+
 @media screen and (max-width: 375px) {
   .icon {
     width: 30px;
@@ -299,5 +446,116 @@ label {
   }
   .title {
     padding-bottom: 0;
+  }
+  .hero {
+    height: 350px;
+  }
+  .button-with-icon {
+    font-size: 14px;
+    padding: 5px 10px;
+    bottom: 15px;
+    right: 15px;
+  }
+  .button-with-icon img {
+    width: 20px;
+    height: 20px;
+    vertical-align: -5px;
+  }
+  .player, .title.detail-page, .post-comment {
+    padding: 15px 18px;
+  }
+  .progress-bar-player {
+    width: 253px;
+    height: 4px;
+    margin-left: 10px;
+    margin-top: 6px;
+  }
+  .progress-bar-player span {
+    width: 100px;
+    height: 4px;
+  }
+  .progress-bar-player label {
+    width: 15px;
+    height: 15px;
+    top: -6px;
+    left: -3px;
+  }
+  .progress-bar-player label span {
+    width: 11px;
+    height: 11px;
+    left: 2px;
+    top: 2px;
+  }
+  .player label {
+    font-size: 12px;
+  }
+  .title.detail-page h2 {
+    font-size: 19px;
+  }
+  .post-comment button {
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+  }
+  .post-comment {
+    font-size: 17px;
+  }
+  .post-comment button {
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+    margin-top: -6px;
+  }
+  .player-buttons button {
+    padding: 0;
+    border: 0;
+    background-color: white;
+  }
+  .player-buttons button:nth-child(2) img {
+    width: 50px;
+    height: 50px;
+  }
+  .pre img, .next img {
+    width: 30px;
+    height: 30px;
+  }
+  .player-buttons button:nth-child(2) {
+    margin: 0 20px;
+  }
+  .player-buttons {
+    margin-top: 30px;
+  }
+  .comments {
+    font-size: 14px;
+    padding: 15px;
+  }
+  .comment {
+    padding: 15px;
+  }
+  .comment img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .comment-detail {
+    margin-left: 15px;
+  }
+  .comment-detail label {
+    font-size: 16px;
+  }
+  .comment-detail p {
+    font-size: 13px;
+  }
+  .comment-detail span {
+    font-size: 15px;
+    color: #ccc;
+  }
+  .comment-detail span:last-child {
+    font-size: 14px;
+  }
+  .comment-detail img {
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
   }
 }

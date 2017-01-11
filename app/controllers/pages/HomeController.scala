@@ -53,9 +53,10 @@ object HomeController extends Controller {
 		}
 	})
 	def payloadPlayer(a : String, t : String) = Action (request => checkAuth(t, request) { user =>
-		import pattern.ResultMessage.lst_result
+		import pattern.ResultMessage.common_result
 		val routes = MessageRoutes(msg_queryPayloadWithPath(toJson(Map("path" -> a))) :: msg_CommonResultMessage() :: Nil, None)
 		val result = commonExcution(routes)
+		println(result)
 
 		try {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
