@@ -8,6 +8,7 @@ import java.net.URLEncoder
 
 import module.auth.AuthMessages._
 import module.payload.PayloadMessages._
+import module.systemnotify.SystemNotifyMessages._
 import pattern.ResultMessage.msg_CommonResultMessage
 import controllers.common.requestArgsQuery._
 import controllers.pages.AdminController.{InternalServerError, Ok}
@@ -56,13 +57,12 @@ object HomeController extends Controller {
 		import pattern.ResultMessage.common_result
 		val routes = MessageRoutes(msg_queryPayloadWithPath(toJson(Map("path" -> a))) :: msg_CommonResultMessage() :: Nil, None)
 		val result = commonExcution(routes)
-		println(result)
 
 		try {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
 			if (status == "ok") {
 				val payload = (result \ "result").asOpt[JsValue].get
-				(Ok(views.html.audioplay("播放试听")(user)(payload)(a)))
+				(Ok(views.html.audioplay("每天5分钟听财经资讯")(user)(payload)(a)))
 
 			} else throw new Exception
 
@@ -71,10 +71,39 @@ object HomeController extends Controller {
 		}
 	})
 	def sysnotlst(t : String) = Action (request => checkAuth(t, request) { user =>
-		(Ok(views.html.admin_playload_player("播放试听")("")))
+		import pattern.ResultMessage.lst_result
+		val routes = MessageRoutes(msg_allSystemNotify(toJson("")) :: msg_CommonResultMessage() :: Nil, None)
+		val result = commonExcution(routes)
+
+		try {
+			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
+			if (status == "ok") {
+				val sys_lst = (result \ "result").asOpt[JsArray].get.value.toList
+				Ok(views.html.sysnotpage("每天5分钟听财经资讯")(t)(user)(sys_lst))
+
+			} else throw new Exception
+
+		} catch {
+			case _ => BadRequest("invalid input args")
+		}
 	})
 	def userprofile(t : String) = Action (request => checkAuth(t, request) { user =>
-		(Ok(views.html.admin_playload_player("播放试听")("")))
+		import pattern.ResultMessage.common_result
+		val routes = MessageRoutes(msg_authWithWechat(toJson(Map("wechat_id" -> t))) :: msg_CommonResultMessage() :: Nil, None)
+		val result = commonExcution(routes)
+
+		try {
+			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
+			if (status == "ok") {
+				val user = (result \ "result").asOpt[JsValue].get
+				(Ok(views.html.profilepage("每天5分钟听财经资讯")(t)(user)))
+
+			} else throw new Exception
+
+		} catch {
+			case _ => BadRequest("invalid input args")
+		}
+
 	})
 	
 	def checkAuth(t : String, request : Request[AnyContent])(fr : JsValue => Result) : Result = {

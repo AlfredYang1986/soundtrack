@@ -22,6 +22,7 @@ object SystemNotifyModule extends ModuleTrait {
 		case msg_queryMultipleSystemNotify(data) => queryMultipleSystemNotify(data)
 		case msg_updateSystemNotify(data) => updateSystemNotify(data)
 		case msg_popSystemNotify(data) => popSystemNotify(data)
+		case msg_allSystemNotify(data) => queryAllSystemNotify(data)
 		
 		case _ => ???
 	}
@@ -64,6 +65,18 @@ object SystemNotifyModule extends ModuleTrait {
  			case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
  		}
  	}
+
+	def queryAllSystemNotify(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
+		try {
+			val take = (data \ "take").asOpt[Int].map (x => x).getOrElse(10)
+			val skip = (data \ "skip").asOpt[Int].map (x => x).getOrElse(0)
+
+			val result = ((from db() in "sys_not").selectSkipTop(skip)(take)("date")(DB2JsValue(_))).toList
+			(Some(Map("result" -> toJson(result), "message" -> toJson("all sys not"))), None)
+		} catch {
+			case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
+		}
+	}
  	
  	def updateSystemNotify(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
  		try {

@@ -11,4 +11,5 @@ object SystemNotifyMessages {
 	case class msg_queryMultipleSystemNotify(data : JsValue) extends msg_SystemNotifyCommand
 	case class msg_updateSystemNotify(data : JsValue) extends msg_SystemNotifyCommand
 	case class msg_popSystemNotify(data : JsValue) extends msg_SystemNotifyCommand
+	case class msg_allSystemNotify(data : JsValue) extends msg_SystemNotifyCommand
 }
