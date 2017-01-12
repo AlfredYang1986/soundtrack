@@ -21,21 +21,7 @@ object HomeController extends Controller {
 	 */
 	val app_id = "wx86135fc9a5e67ff3"
 	val app_secret = "74f13dbccc1b8323aadebda15d35144d"
-	
-	/**
-	 * wechat business id
-	 */
-	val mch_id = "1270524501"
-//	val mch_key = "RataVageTigreConejoDragon8888888"
-	val mch_key = "jietengculturejietengcultureabcd"
-	val pay_noncestr = "b927722419c52622651a871d1d9ed8b2"
-	val pay_body = "会员年费"
-	val pay_notify = "http://wxpay.weixin.qq.com/pub_v2/pay/notify.php"
-	  
-	val weixin_http = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + app_id + "&secret=" + app_secret
-	val weixin_jsapi = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token="
-	val weixin_userinfo = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN"
-	
+
 	def index(t : String) = Action (request => checkAuth(t, request) { user =>
 		import pattern.ResultMessage.lst_result
 		val routes = MessageRoutes(msg_queryMutiplePayload(toJson(Map("token" -> t))) :: msg_CommonResultMessage() :: Nil, None)
