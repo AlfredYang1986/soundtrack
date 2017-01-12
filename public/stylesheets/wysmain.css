@@ -276,6 +276,8 @@ label {
   margin-top: 57px;
 }
 .player-buttons button:nth-child(2) {
+  min-width: 166px;
+  min-height: 150px;
   margin: 0 39px;
 }
 .player-buttons button:nth-child(2) img {
@@ -314,7 +316,6 @@ label {
   height: 40px;
   margin-right: 12px;
 }
-
 
 @media screen and (max-width: 375px) {
   .icon {
@@ -515,9 +516,13 @@ label {
     width: 50px;
     height: 50px;
   }
+  .pre, .next {
+      display: none;
+  }
   .pre img, .next img {
     width: 30px;
     height: 30px;
+    display: none;
   }
   .player-buttons button:nth-child(2) {
     margin: 0 20px;
