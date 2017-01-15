@@ -31,7 +31,7 @@ object HomeController extends Controller {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw  new Exception)
 			if (status == "ok") {
 				val contents = (result \ "result").asOpt[JsArray].get.value.toList
-				Ok(views.html.homepage("每天5分钟听财经资讯")(t)(user)(contents))
+				Ok(views.html.homepage("每天听见财经资讯")(t)(user)(contents))
 
 			} else throw new Exception
 
@@ -41,14 +41,14 @@ object HomeController extends Controller {
 	})
 	def payloadPlayer(a : String, t : String) = Action (request => checkAuth(t, request) { user =>
 		import pattern.ResultMessage.common_result
-		val routes = MessageRoutes(msg_queryPayloadWithPath(toJson(Map("path" -> a))) :: msg_CommonResultMessage() :: Nil, None)
+		val routes = MessageRoutes(msg_updatePayloadWithPath(toJson(Map("path" -> toJson(a), "play_times" -> toJson(1)))) :: msg_queryPayloadWithPath(toJson(Map("path" -> a))) :: msg_CommonResultMessage() :: Nil, None)
 		val result = commonExcution(routes)
 
 		try {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
 			if (status == "ok") {
 				val payload = (result \ "result").asOpt[JsValue].get
-				(Ok(views.html.audioplay("每天5分钟听财经资讯")(user)(payload)(a)))
+				(Ok(views.html.audioplay("每天听见财经资讯")(user)(payload)(a)))
 
 			} else throw new Exception
 
@@ -65,7 +65,7 @@ object HomeController extends Controller {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
 			if (status == "ok") {
 				val sys_lst = (result \ "result").asOpt[JsArray].get.value.toList
-				Ok(views.html.sysnotpage("每天5分钟听财经资讯")(t)(user)(sys_lst))
+				Ok(views.html.sysnotpage("每天听见财经资讯")(t)(user)(sys_lst))
 
 			} else throw new Exception
 
@@ -82,7 +82,7 @@ object HomeController extends Controller {
 			val status = (result \ "status").asOpt[String].map (x => x).getOrElse(throw new Exception)
 			if (status == "ok") {
 				val user = (result \ "result").asOpt[JsValue].get
-				(Ok(views.html.profilepage("每天5分钟听财经资讯")(t)(user)))
+				(Ok(views.html.profilepage("每天听见财经资讯")(t)(user)))
 
 			} else throw new Exception
 

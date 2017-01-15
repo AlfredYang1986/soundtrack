@@ -23,6 +23,7 @@ object PayloadModule extends ModuleTrait {
 		case msg_updatePayload(data) => updatePayload(data)
 		case msg_popPayload(data) => popPayload(data)
 		case msg_queryPayloadWithPath(data) => queryPayladWithPath(data)
+		case msg_updatePayloadWithPath(data) => updatePayloadWithPath(data)
 
 		case _ => ???
 	}
@@ -84,6 +85,32 @@ object PayloadModule extends ModuleTrait {
 		}
 	}
 
+	def updatePayloadWithPath(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
+		try {
+			val path = (data \ "path").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
+
+			(from db() in "payload" where ("path" -> path) select (x => x)).toList match {
+				case head :: Nil => {
+					(data \ "title").asOpt[String].map (x => head += "title" -> x).getOrElse(Unit)
+					(data \ "sub_title").asOpt[String].map (x => head += "sub_title" -> x).getOrElse(Unit)
+					(data \ "cover_pic").asOpt[String].map (x => head += "cover_pic" -> x).getOrElse(Unit)
+					(data \ "message_id").asOpt[String].map (x => head += "message_id" -> x).getOrElse(Unit)
+					(data \ "play_times").asOpt[Int].map {
+						val t = head.getAs[Number]("play_times").get.intValue
+						x => head += "play_times" -> (t + x).asInstanceOf[Number]
+					}.getOrElse(Unit)
+
+					_data_connection.getCollection("payload").update(DBObject("path" -> path), head)
+					(Some(DB2JsValue(head)), None)
+				}
+				case _ => throw new Exception("service not existing")
+			}
+
+		} catch {
+			case ex : Exception => (None, Some(ErrorCode.errorToJson(ex.getMessage)))
+		}
+	}
+
 	def updatePayload(data : JsValue) : (Option[Map[String, JsValue]], Option[JsValue]) = {
 		try {
 			val payload_id = (data \ "payload_id").asOpt[String].map (x => x).getOrElse(throw new Exception("wrong input"))
@@ -95,6 +122,8 @@ object PayloadModule extends ModuleTrait {
 					(data \ "cover_pic").asOpt[String].map (x => head += "cover_pic" -> x).getOrElse(Unit)
 					(data \ "path").asOpt[String].map (x => head += "path" -> x).getOrElse(Unit)
 					(data \ "message_id").asOpt[String].map (x => head += "message_id" -> x).getOrElse(Unit)
+
+					_data_connection.getCollection("payload").update(DBObject("payload_id" -> payload_id), head)
 					(Some(DB2JsValue(head)), None)
 				}
 				case _ => throw new Exception("service not existing")

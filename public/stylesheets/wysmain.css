@@ -30,9 +30,9 @@ label {
   margin-top: 10px;
 }
 .main-ad {
-  height: 300px;
-  background-image: url("../images/main.png");
-  background-size: cover;
+    height: 300px;
+    background-image: url("../images/main.jpg");
+    background-size: cover;
 }
 .user {
   padding: 30px 25px;
