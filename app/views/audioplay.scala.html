@@ -135,17 +135,25 @@
             Waud.init();
             Waud.enableTouchUnlock(touchUnlock);
 
+
             bgSnd = new WaudSound("@{"/file/download/" + audio}", {
                 "autoplay": true,
                 "loop": true,
-                //"onload": loadSuccess(),
-                "onend": endSound()
+                "onEnd": endSound()
             });
-
+//            var base64pack = new WaudBase64Pack("/file/download/sounds.json", _onLoad);
+            @*bgSnd = new WaudSound("@{"/file/download/" + "sounds.json"}");*@
             bgSnd.onload = loadSuccess();
+//            bgSnd.onEnd = endSound();
+//            bgSnd.play();
 
             setInterval(clockticking, 1000);
 		});
+
+//        function _onLoad(snds) {
+//            snds.get("sounds/test.mp3").play();
+//            bgSnd = snds.get("sounds/test.mp3")
+//        }
 
         function touchUnlock() {
             if (!bgSnd.isPlaying()) bgSnd.play();

@@ -1,9 +1,11 @@
 import play.api.GlobalSettings
-
 import module.auth
 import util.dao._
+import play.api.mvc.Results._
+import play.api.mvc.WithFilters
+import play.filters.gzip.GzipFilter
 
-object Global extends GlobalSettings {
+object Global extends WithFilters(new GzipFilter) with GlobalSettings {
 	
 	override def onStart(application: play.api.Application)  = {
 		import scala.concurrent.duration._
