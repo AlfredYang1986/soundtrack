@@ -4,6 +4,7 @@
 	<script src="@routes.Assets.at("jquery-ui/jquery-ui.js")" type="text/javascript"></script>
 	<script src="@routes.Assets.at("javascripts/jquery.fileupload.js")" type="text/javascript"></script>
 	<script src="@routes.Assets.at("javascripts/jquery.iframe-transport.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.at("waud/waud.min.js")" type="text/javascript"></script>
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("jquery-ui/jquery-ui.theme.css")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("jquery-ui/jquery-ui.structure.css")">
 
@@ -23,14 +24,14 @@
 
 	<div class="player">
 		<div class="progress-player">
-			<label id="current-time" class="pull-left"></label>
+			<label id="current-time" class="pull-left">00:00</label>
 			<div class="progress-bar-player">
 				<span></span>
 				<label>
 					<span></span>
 				</label>
 			</div>
-			<label id="duration-label" class="pull-right"></label>
+			<label id="duration-label" class="pull-right">00:00</label>
 		</div>
 		<div class="player-buttons">
 			<button class="pre">
@@ -127,61 +128,53 @@
 
 } {
 	<script type="text/javascript">
-		var context;
-		var source = null;
-		var sb = null;
-		var playing = false;
 		var cur = 0;
+        var bgSnd;
 
 		$(function () {
-		    setInterval(clockticking, 1000);
-			window.AudioContext = window.AudioContext || window.webkitAudioContext;
-			context = new AudioContext();
-            loadSound("@{audio}")
+            Waud.init();
+            Waud.enableTouchUnlock(touchUnlock);
+
+            bgSnd = new WaudSound("@{"/file/download/" + audio}", {
+                "autoplay": true,
+                "loop": true,
+                //"onload": loadSuccess(),
+                "onend": endSound()
+            });
+
+            bgSnd.onload = loadSuccess();
+
+            setInterval(clockticking, 1000);
 		});
 
-		function loadSound(name) {
-			var url = "/file/download/" + name;
-			var request = new XMLHttpRequest();
-			request.open('GET', url, true);
-			request.responseType = 'arraybuffer';
+        function touchUnlock() {
+            if (!bgSnd.isPlaying()) bgSnd.play();
+        }
 
-			// Decode asynchronously
-			request.onload = function() {
-				context.decodeAudioData(request.response, function(buffer) {
-					// dogBarkingBuffer = buffer;
-                    sb = buffer;
-					playSound(sb);
-				});
-			}
-			request.onError = function() {
-				alert("error");
-			}
-			request.send();
-		}
+        function loadSuccess() {
+            var min = Math.floor(bgSnd.getDuration() / 60);
+            var sec = Math.floor(bgSnd.getDuration() - min * 60);
+            $('#duration-label').html(min + ":" + (sec < 10 ? "0" + sec : sec));
+            $('#current-time').html("00:00");
+        }
 
 		function playSound() {
-			source = context.createBufferSource();     // creates a sound source
-			source.buffer = sb;                        // tell the source which sound to play
-			source.connect(context.destination);       // connect the source to the context's destination (the speakers)
-            source.start(0);                           // play the source now
-													   // note: on older systems, may have to use deprecated noteOn(time);
             $('#start').removeClass('active');
             $('#stop').addClass('active');
-
-            playing = true;
-            var min = Math.floor(source.buffer.duration / 60);
-            $('#duration-label').html(min + ":" + Math.floor(source.buffer.duration - min * 60));
-            $('#current-time').html("0:00");
+            bgSnd.play();
 		}
 
         function stopSound() {
-            source.stop(0);
-            playing = false;
-		    $('#stop').removeClass('active');
-		    $('#start').addClass('active');
+            bgSnd.stop();
+		    endSound();
+        }
+
+        function endSound() {
             cur = 0;
-            $('#current-time').html("0:00");
+            $('#stop').removeClass('active');
+            $('#start').addClass('active');
+
+            $('#current-time').html("00:00");
 
             $('.progress-bar-player > span').css({
                 "width":0,
@@ -193,15 +186,16 @@
         }
 
         function clockticking() {
-		    if (context && playing) {
+		    if (bgSnd.isPlaying()) {
+		        loadSuccess();
 		        cur += 1;
 
-		        if (cur < source.buffer.duration) {
+		        if (cur < bgSnd.getDuration()) {
                     var min = Math.floor(cur / 60);
                     var sec = Math.floor(cur - min * 60);
                     $('#current-time').html(min + ":" + (sec < 10 ? "0" + sec : sec));
 
-                    var length = (cur / source.buffer.duration) * 700;
+                    var length = (cur / bgSnd.getDuration()) * 700;
 
                     $('.progress-bar-player > span').css({
                         "width":length,

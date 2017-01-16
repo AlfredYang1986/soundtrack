@@ -40,3 +40,32 @@
     </div>
 </div>
 }}
+
+<script type="text/javascript">
+    function deletePayload(payload_id) {
+        var query_object = new Object();
+
+        query_object['payload_id'] = payload_id;
+
+        $.ajax({
+            url: "/payload/push",
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json, charset=utf-8',
+            data: JSON.stringify(query_object),
+            cache: false,
+            success: function (data) {
+                if (data.status == "ok") {
+                    alert('上传成功')
+                    location.reload();
+
+                } else {
+                    alert(data.error.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("请检查您的输入");
+            }
+        });
+    }
+</script>
